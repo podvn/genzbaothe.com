@@ -11,11 +11,6 @@ function json(data, status = 200) {
   );
 }
 
-
-/* =========================
-   HMAC SHA-256
-========================= */
-
 async function sign(value, secret) {
 
   const key = await crypto.subtle.importKey(
@@ -29,11 +24,12 @@ async function sign(value, secret) {
     ["sign"]
   );
 
-  const signature = await crypto.subtle.sign(
-    "HMAC",
-    key,
-    new TextEncoder().encode(value)
-  );
+  const signature =
+    await crypto.subtle.sign(
+      "HMAC",
+      key,
+      new TextEncoder().encode(value)
+    );
 
   return btoa(
     String.fromCharCode(
@@ -45,11 +41,6 @@ async function sign(value, secret) {
     .replace(/=+$/, "");
 }
 
-
-/* =========================
-   CREATE TOKEN
-========================= */
-
 async function createToken(secret) {
 
   const payload = {
@@ -58,14 +49,16 @@ async function createToken(secret) {
       24 * 60 * 60 * 1000
   };
 
-  const payloadString = btoa(
-    JSON.stringify(payload)
-  );
+  const payloadString =
+    btoa(
+      JSON.stringify(payload)
+    );
 
-  const signature = await sign(
-    payloadString,
-    secret
-  );
+  const signature =
+    await sign(
+      payloadString,
+      secret
+    );
 
   return (
     payloadString +
@@ -74,55 +67,41 @@ async function createToken(secret) {
   );
 }
 
-
-/* =========================
-   POST /api/admin/login
-========================= */
-
 export async function onRequestPost({
   request,
   env
 }) {
-
-  /* -------------------------
-     CHECK CONFIG
-  ------------------------- */
 
   if (!env.ADMIN_PASSWORD) {
 
     return json(
       {
         error:
-          "ADMIN_PASSWORD chưa được cấu hình trên Cloudflare."
+          "ADMIN_PASSWORD chưa được cấu hình."
       },
       500
     );
 
   }
-
 
   if (!env.ADMIN_SECRET) {
 
     return json(
       {
         error:
-          "ADMIN_SECRET chưa được cấu hình trên Cloudflare."
+          "ADMIN_SECRET chưa được cấu hình."
       },
       500
     );
 
   }
 
-
-  /* -------------------------
-     READ BODY
-  ------------------------- */
-
   let body;
 
   try {
 
-    body = await request.json();
+    body =
+      await request.json();
 
   } catch {
 
@@ -136,16 +115,10 @@ export async function onRequestPost({
 
   }
 
-
-  /* -------------------------
-     READ PASSWORD
-  ------------------------- */
-
   const password =
     typeof body?.password === "string"
       ? body.password
       : "";
-
 
   if (!password) {
 
@@ -158,11 +131,6 @@ export async function onRequestPost({
     );
 
   }
-
-
-  /* -------------------------
-     CHECK PASSWORD
-  ------------------------- */
 
   if (
     password !==
@@ -179,20 +147,10 @@ export async function onRequestPost({
 
   }
 
-
-  /* -------------------------
-     CREATE TOKEN
-  ------------------------- */
-
   const token =
     await createToken(
       env.ADMIN_SECRET
     );
-
-
-  /* -------------------------
-     SUCCESS
-  ------------------------- */
 
   return json(
     {
