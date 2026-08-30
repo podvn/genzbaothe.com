@@ -4,1623 +4,1501 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-  <title>GenZ BaoThe Admin</title>
+<title>GenZ BaoThe Admin</title>
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f6f8;
-      color: #111923;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #111923;
+}
 
-    button,
-    input,
-    textarea,
-    select {
-      font-family: inherit;
-    }
-
-    button:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
 
 
-    /* =========================
-       LOGIN
-    ========================= */
+/* =========================
+   LOGIN
+========================= */
 
-    .login {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-    }
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
 
-    .login-box {
-      width: 390px;
-      max-width: 100%;
-      background: #fff;
-      padding: 30px;
-      border-radius: 18px;
-      border: 1px solid #e1e5e9;
-      box-shadow: 0 10px 35px rgba(0,0,0,.05);
-    }
+.login-box {
+  width: 390px;
+  max-width: 100%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
 
-    .login-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 25px;
-    }
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
 
-    .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      background: #baff28;
-      display: grid;
-      place-items: center;
-      color: #111923;
-    }
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #baff28;
+  display: grid;
+  place-items: center;
+}
 
-    .login-box h1 {
-      margin: 0 0 8px;
-      font-size: 24px;
-    }
+.login-box h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
 
-    .login-box p {
-      color: #737c87;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
+.login-box p {
+  color: #737c87;
+  font-size: 13px;
+  line-height: 1.6;
+}
 
-    .login-box input {
-      width: 100%;
-      border: 1px solid #dfe4e9;
-      border-radius: 10px;
-      padding: 13px;
-      margin: 10px 0;
-      outline: none;
-      font-size: 14px;
-    }
+.login-box input {
+  width: 100%;
+  border: 1px solid #dfe4e9;
+  border-radius: 10px;
+  padding: 13px;
+  margin: 10px 0;
+  outline: none;
+  font-size: 14px;
+}
 
-    .login-box input:focus {
-      border-color: #111923;
-    }
+.login-box input:focus {
+  border-color: #111923;
+}
 
-    .login-box button {
-      width: 100%;
-      border: 0;
-      border-radius: 10px;
-      background: #baff28;
-      padding: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      margin-top: 8px;
-    }
+.login-box button {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background: #baff28;
+  padding: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
 
-    .login-box button:hover {
-      opacity: .9;
-    }
+.login-box button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
 
-    .login-error {
-      display: none;
-      margin-top: 12px;
-      padding: 10px 12px;
-      border-radius: 9px;
-      background: #fff1f0;
-      color: #b42318;
-      font-size: 12px;
-      line-height: 1.5;
-    }
+.login-error {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  background: #fff1f0;
+  color: #b42318;
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-    .login-success {
-      display: none;
-      margin-top: 12px;
-      padding: 10px 12px;
-      border-radius: 9px;
-      background: #f0fdf4;
-      color: #15803d;
-      font-size: 12px;
-    }
-
-    .login-hint {
-      color: #8a929d;
-      font-size: 10px;
-      margin-top: 15px;
-      line-height: 1.5;
-    }
+.login-hint {
+  color: #8a929d;
+  font-size: 10px;
+  margin-top: 15px;
+  line-height: 1.5;
+}
 
 
-    /* =========================
-       ADMIN
-    ========================= */
+/* =========================
+   ADMIN
+========================= */
 
-    .admin {
-      display: grid;
-      grid-template-columns: 230px 1fr;
-      min-height: 100vh;
-    }
+.admin {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 100vh;
+}
 
-    .sidebar {
-      background: #111923;
-      color: #fff;
-      padding: 22px 15px;
-    }
+.sidebar {
+  background: #111923;
+  color: #fff;
+  padding: 22px 15px;
+}
 
-    .sidebar-brand {
-      font-size: 17px;
-      font-weight: 800;
-      padding: 10px;
-      margin-bottom: 25px;
-    }
+.sidebar-brand {
+  font-size: 17px;
+  font-weight: 800;
+  padding: 10px;
+  margin-bottom: 25px;
+}
 
-    .sidebar button {
-      display: block;
-      width: 100%;
-      border: 0;
-      background: transparent;
-      color: #aeb7c1;
-      text-align: left;
-      padding: 12px;
-      border-radius: 9px;
-      cursor: pointer;
-      margin: 4px 0;
-    }
+.sidebar button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #aeb7c1;
+  text-align: left;
+  padding: 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  margin: 4px 0;
+}
 
-    .sidebar button:hover,
-    .sidebar button.active {
-      background: #202b37;
-      color: #fff;
-    }
+.sidebar button:hover,
+.sidebar button.active {
+  background: #202b37;
+  color: #fff;
+}
 
-    .content {
-      width: min(1100px, 100%);
-      padding: 30px;
-    }
+.content {
+  width: min(1100px, 100%);
+  padding: 30px;
+}
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 25px;
-    }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
 
-    .topbar h1 {
-      margin: 0;
-      font-size: 27px;
-    }
+.topbar h1 {
+  margin: 0;
+  font-size: 27px;
+}
 
-    .save-btn {
-      border: 0;
-      background: #baff28;
-      color: #111;
-      border-radius: 10px;
-      padding: 12px 18px;
-      font-weight: 800;
-      cursor: pointer;
-    }
+.save-btn {
+  border: 0;
+  background: #baff28;
+  color: #111;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
 
-    .status {
-      font-size: 11px;
-      color: #68727e;
-      margin-right: 10px;
-    }
+.status {
+  font-size: 11px;
+  color: #68727e;
+  margin-right: 10px;
+}
 
-    .panel {
-      background: #fff;
-      border: 1px solid #e3e7eb;
-      border-radius: 16px;
-      padding: 23px;
-      margin-bottom: 18px;
-    }
+.panel {
+  background: #fff;
+  border: 1px solid #e3e7eb;
+  border-radius: 16px;
+  padding: 23px;
+  margin-bottom: 18px;
+}
 
-    .panel h2 {
-      font-size: 17px;
-      margin: 0 0 20px;
-    }
+.panel h2 {
+  font-size: 17px;
+  margin: 0 0 20px;
+}
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
+.field.full {
+  grid-column: 1 / -1;
+}
 
-    .field label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #69727e;
-    }
+.field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #69727e;
+}
 
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      border: 1px solid #dfe4e9;
-      border-radius: 9px;
-      padding: 11px;
-      outline: none;
-      font-size: 13px;
-    }
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  border: 1px solid #dfe4e9;
+  border-radius: 9px;
+  padding: 11px;
+  outline: none;
+  font-size: 13px;
+}
 
-    .field textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    .product-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .product {
-      border: 1px solid #e1e5e9;
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .product-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
-    .product-title {
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .small-btn {
-      border: 1px solid #dfe4e9;
-      background: #fff;
-      border-radius: 8px;
-      padding: 7px 10px;
-      cursor: pointer;
-    }
-
-    .add-btn {
-      background: #111923;
-      color: #fff;
-      border: 0;
-      margin-left: 10px;
-    }
-
-    .delete-btn {
-      color: #b42318;
-    }
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
 
 
-    /* =========================
-       MOBILE
-    ========================= */
+/* =========================
+   PRODUCTS
+========================= */
 
-    @media(max-width:850px) {
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
 
-      .admin {
-        grid-template-columns: 1fr;
-      }
+.product {
+  border: 1px solid #e1e5e9;
+  border-radius: 14px;
+  padding: 16px;
+}
 
-      .sidebar {
-        display: none;
-      }
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
 
-      .content {
-        padding: 18px;
-      }
+.product-title {
+  font-size: 14px;
+  font-weight: 800;
+}
 
-      .form-grid,
-      .product-list {
-        grid-template-columns: 1fr;
-      }
+.small-btn {
+  border: 1px solid #dfe4e9;
+  background: #fff;
+  border-radius: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
 
-      .topbar {
-        align-items: flex-start;
-      }
+.add-btn {
+  background: #111923;
+  color: #fff;
+  border: 0;
+  margin-left: 10px;
+}
 
-    }
+.delete-btn {
+  color: #b42318;
+}
 
-  </style>
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px) {
+
+  .admin {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .form-grid,
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-  <div id="app"></div>
+<div id="app"></div>
 
 
-  <script>
+<script>
 
-    /* =========================
-       GLOBAL STATE
-    ========================= */
+let token =
+  sessionStorage.getItem(
+    "genzbaothe_admin_token"
+  );
 
-    let token =
-      sessionStorage.getItem(
-        "genzbaothe_admin_token"
+let data = null;
+
+
+/* =========================
+   LOGIN SCREEN
+========================= */
+
+function showLogin() {
+
+  document.getElementById("app").innerHTML = `
+
+    <div class="login">
+
+      <div class="login-box">
+
+        <div class="login-logo">
+
+          <span class="logo">
+            G
+          </span>
+
+          GenZ BaoThe
+
+        </div>
+
+
+        <h1>
+          Quản trị website
+        </h1>
+
+
+        <p>
+          Đăng nhập để chỉnh sửa nội dung,
+          sản phẩm và affiliate campaign.
+        </p>
+
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Mật khẩu admin"
+          autocomplete="current-password"
+        >
+
+
+        <button
+          id="loginButton"
+          type="button"
+        >
+          Đăng nhập
+        </button>
+
+
+        <div
+          id="loginError"
+          class="login-error"
+        ></div>
+
+
+        <div class="login-hint">
+
+          Mật khẩu được cấu hình trong
+          Cloudflare Environment Variables
+          với tên ADMIN_PASSWORD.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  const passwordInput =
+    document.getElementById(
+      "password"
+    );
+
+
+  const loginButton =
+    document.getElementById(
+      "loginButton"
+    );
+
+
+  passwordInput.focus();
+
+
+  passwordInput.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        login();
+
+      }
+
+    }
+  );
+
+
+  loginButton.addEventListener(
+    "click",
+    login
+  );
+
+}
+
+
+/* =========================
+   LOGIN ERROR
+========================= */
+
+function showLoginError(message) {
+
+  const box =
+    document.getElementById(
+      "loginError"
+    );
+
+
+  if (!box) {
+
+    alert(message);
+
+    return;
+
+  }
+
+
+  box.textContent =
+    message;
+
+  box.style.display =
+    "block";
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+async function login() {
+
+  const passwordInput =
+    document.getElementById(
+      "password"
+    );
+
+  const loginButton =
+    document.getElementById(
+      "loginButton"
+    );
+
+
+  const password =
+    passwordInput.value;
+
+
+  if (!password) {
+
+    showLoginError(
+      "Vui lòng nhập mật khẩu."
+    );
+
+    return;
+
+  }
+
+
+  loginButton.disabled = true;
+
+  loginButton.textContent =
+    "Đang đăng nhập...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/admin/login",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify({
+              password: password
+            })
+        }
       );
 
-    let data = null;
+
+    const text =
+      await response.text();
 
 
-    /* =========================
-       LOGIN SCREEN
-    ========================= */
-
-    function showLogin() {
-
-      document.getElementById("app").innerHTML = `
-
-        <div class="login">
-
-          <div class="login-box">
-
-            <div class="login-logo">
-
-              <span class="logo">
-                G
-              </span>
-
-              GenZ BaoThe
-
-            </div>
+    let result = {};
 
 
-            <h1>
-              Quản trị website
-            </h1>
+    try {
+
+      result =
+        JSON.parse(text);
+
+    }
+
+    catch {
+
+      result = {};
+
+    }
 
 
-            <p>
-              Đăng nhập để chỉnh sửa nội dung,
-              sản phẩm và affiliate campaign.
-            </p>
+    console.log(
+      "LOGIN STATUS:",
+      response.status
+    );
 
 
-            <input
-              id="password"
-              type="password"
-              placeholder="Mật khẩu admin"
-              autocomplete="current-password"
-            >
+    console.log(
+      "LOGIN RESPONSE:",
+      result
+    );
+
+
+    if (!response.ok) {
+
+      showLoginError(
+        result.error ||
+        `Server trả lỗi HTTP ${response.status}.`
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !result.token
+    ) {
+
+      showLoginError(
+        "Server không trả về token."
+      );
+
+      return;
+
+    }
+
+
+    token =
+      result.token;
+
+
+    sessionStorage.setItem(
+      "genzbaothe_admin_token",
+      token
+    );
+
+
+    await loadAdmin();
+
+  }
+
+
+  catch (error) {
+
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
+
+
+    showLoginError(
+      "Không thể kết nối tới server."
+    );
+
+  }
+
+
+  finally {
+
+    loginButton.disabled =
+      false;
+
+    loginButton.textContent =
+      "Đăng nhập";
+
+  }
+
+}
+
+
+/* =========================
+   ADMIN API
+========================= */
+
+async function adminAPI(
+  url,
+  options = {}
+) {
+
+  options.headers = {
+
+    ...(options.headers || {}),
+
+    "Authorization":
+      "Bearer " + token,
+
+    "Content-Type":
+      "application/json"
+
+  };
+
+
+  const response =
+    await fetch(
+      url,
+      options
+    );
+
+
+  if (
+    response.status === 401
+  ) {
+
+    sessionStorage.removeItem(
+      "genzbaothe_admin_token"
+    );
+
+    token = null;
+
+    showLogin();
+
+    throw new Error(
+      "Unauthorized"
+    );
+
+  }
+
+
+  return response;
+
+}
+
+
+/* =========================
+   LOAD ADMIN
+========================= */
+
+async function loadAdmin() {
+
+  try {
+
+    const response =
+      await adminAPI(
+        "/api/admin/content"
+      );
+
+
+    if (!response.ok) {
+
+      const text =
+        await response.text();
+
+      throw new Error(
+        text ||
+        "Không tải được dữ liệu."
+      );
+
+    }
+
+
+    data =
+      await response.json();
+
+
+    renderAdmin();
+
+  }
+
+
+  catch (error) {
+
+    console.error(
+      "LOAD ADMIN ERROR:",
+      error
+    );
+
+
+    if (
+      error.message !==
+      "Unauthorized"
+    ) {
+
+      alert(
+        "Không thể tải dữ liệu Admin."
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+function input(
+  label,
+  key,
+  value,
+  full = false
+) {
+
+  return `
+
+    <div class="field ${full ? "full" : ""}">
+
+      <label>
+        ${label}
+      </label>
+
+      <input
+        data-key="${key}"
+        value="${escapeAttr(value)}"
+      >
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+function textarea(
+  label,
+  key,
+  value
+) {
+
+  return `
+
+    <div class="field full">
+
+      <label>
+        ${label}
+      </label>
+
+      <textarea
+        data-key="${key}"
+      >${escapeHTML(value)}</textarea>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value) {
+
+  return escapeHTML(value);
+
+}
+
+
+/* =========================
+   RENDER ADMIN
+========================= */
+
+function renderAdmin() {
+
+  const site =
+    data.site;
+
+
+  document.getElementById(
+    "app"
+  ).innerHTML = `
+
+    <div class="admin">
+
+
+      <aside class="sidebar">
+
+        <div class="sidebar-brand">
+          G GenZ BaoThe
+        </div>
+
+
+        <button
+          class="active"
+          onclick="scrollToSection('site')"
+        >
+          📝 Nội dung
+        </button>
+
+
+        <button
+          onclick="scrollToSection('stats')"
+        >
+          📊 Thống kê
+        </button>
+
+
+        <button
+          onclick="scrollToSection('products')"
+        >
+          💳 Campaign
+        </button>
+
+
+        <button
+          onclick="window.open('/','_blank')"
+        >
+          🌐 Xem website
+        </button>
+
+
+        <button
+          onclick="logout()"
+        >
+          ↪ Đăng xuất
+        </button>
+
+      </aside>
+
+
+      <main class="content">
+
+
+        <div class="topbar">
+
+          <h1>
+            Chỉnh sửa website
+          </h1>
+
+
+          <div>
+
+            <span
+              id="status"
+              class="status"
+            ></span>
 
 
             <button
-              id="loginButton"
-              type="button"
-              onclick="login()"
+              class="save-btn"
+              onclick="saveAll()"
             >
-              Đăng nhập
+              Lưu thay đổi
             </button>
-
-
-            <div
-              id="loginError"
-              class="login-error"
-            ></div>
-
-
-            <div
-              id="loginSuccess"
-              class="login-success"
-            >
-              Đăng nhập thành công. Đang tải Admin...
-            </div>
-
-
-            <div class="login-hint">
-
-              Mật khẩu được cấu hình trong
-              Cloudflare Environment Variables
-              với tên ADMIN_PASSWORD.
-
-            </div>
 
           </div>
 
         </div>
 
-      `;
+
+        <section
+          class="panel"
+          id="site"
+        >
+
+          <h2>
+            🏠 Trang chủ
+          </h2>
 
 
-      const passwordInput =
-        document.getElementById(
-          "password"
-        );
+          <div class="form-grid">
+
+            ${input(
+              "Tên website",
+              "brand",
+              site.brand
+            )}
+
+            ${input(
+              "Eyebrow",
+              "heroEyebrow",
+              site.heroEyebrow
+            )}
+
+            ${input(
+              "Tiêu đề lớn",
+              "heroTitle",
+              site.heroTitle
+            )}
+
+            ${input(
+              "Dòng chữ màu xanh",
+              "heroHighlight",
+              site.heroHighlight
+            )}
+
+            ${textarea(
+              "Mô tả Hero",
+              "heroDescription",
+              site.heroDescription
+            )}
+
+            ${input(
+              "Tiêu đề phần so sánh",
+              "compareTitle",
+              site.compareTitle
+            )}
+
+            ${textarea(
+              "Mô tả phần so sánh",
+              "compareDescription",
+              site.compareDescription
+            )}
+
+            ${input(
+              "Tiêu đề CTA",
+              "ctaTitle",
+              site.ctaTitle
+            )}
+
+            ${textarea(
+              "Mô tả CTA",
+              "ctaDescription",
+              site.ctaDescription
+            )}
+
+            ${textarea(
+              "Mô tả Footer",
+              "footerDescription",
+              site.footerDescription
+            )}
+
+          </div>
+
+        </section>
 
 
-      if (passwordInput) {
+        <section
+          class="panel"
+          id="stats"
+        >
 
-        passwordInput.focus();
-
-
-        passwordInput.addEventListener(
-          "keydown",
-          function(event) {
-
-            if (
-              event.key === "Enter"
-            ) {
-
-              login();
-
-            }
-
-          }
-        );
-
-      }
-
-    }
+          <h2>
+            📊 Thống kê
+          </h2>
 
 
-    /* =========================
-       SHOW LOGIN ERROR
-    ========================= */
+          <div class="form-grid">
 
-    function showLoginError(message) {
+            ${input(
+              "Số sản phẩm",
+              "stats.products",
+              site.stats.products
+            )}
 
-      const errorBox =
-        document.getElementById(
-          "loginError"
-        );
+            ${input(
+              "Người dùng",
+              "stats.users",
+              site.stats.users
+            )}
 
+            ${input(
+              "Tỉnh thành",
+              "stats.cities",
+              site.stats.cities
+            )}
 
-      if (!errorBox) {
+            ${input(
+              "Hỗ trợ",
+              "stats.support",
+              site.stats.support
+            )}
 
-        alert(message);
+          </div>
 
-        return;
-
-      }
-
-
-      errorBox.textContent =
-        message;
-
-      errorBox.style.display =
-        "block";
-
-
-      const successBox =
-        document.getElementById(
-          "loginSuccess"
-        );
+        </section>
 
 
-      if (successBox) {
+        <section
+          class="panel"
+          id="products"
+        >
 
-        successBox.style.display =
-          "none";
+          <h2>
 
-      }
+            💳 Sản phẩm / Campaign
 
-    }
+            <button
+              class="small-btn add-btn"
+              onclick="addProduct()"
+            >
+              + Thêm campaign
+            </button>
 
-
-    /* =========================
-       LOGIN API
-    ========================= */
-
-    async function login() {
-
-      const passwordInput =
-        document.getElementById(
-          "password"
-        );
-
-      const loginButton =
-        document.getElementById(
-          "loginButton"
-        );
+          </h2>
 
 
-      const password =
-        passwordInput?.value || "";
+          <div
+            class="product-list"
+            id="productList"
+          >
+
+            ${renderProducts()}
+
+          </div>
+
+        </section>
 
 
-      if (!password) {
+      </main>
 
-        showLoginError(
-          "Vui lòng nhập mật khẩu."
-        );
+    </div>
 
-        passwordInput?.focus();
+  `;
 
-        return;
-
-      }
-
-
-      loginButton.disabled =
-        true;
-
-      loginButton.textContent =
-        "Đang đăng nhập...";
-
-
-      try {
-
-        const response =
-          await fetch(
-            "/api/admin/login",
-            {
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body:
-                JSON.stringify({
-                  password: password
-                })
-            }
-          );
-
-
-        const result =
-          await response
-            .json()
-            .catch(
-              () => ({})
-            );
-
-if (!response.ok) {
-
-  console.log("STATUS:", response.status);
-  console.log("RESPONSE:", result);
-
-  showLoginError(
-    result.error ||
-    `Đăng nhập thất bại. HTTP ${response.status}`
-  );
-
-  passwordInput.value = "";
-  passwordInput.focus();
-
-  return;
 }
 
-          passwordInput.value = "";
 
-          passwordInput.focus();
+/* =========================
+   PRODUCTS
+========================= */
 
-          return;
+function renderProducts() {
 
-        }
+  return data.products
+    .map(
+      (product, index) => `
 
+        <div
+          class="product"
+          data-product="${index}"
+        >
 
-        if (!result.token) {
+          <div class="product-header">
 
-          showLoginError(
-            "Server không trả về token đăng nhập."
-          );
+            <div class="product-title">
 
-          return;
+              ${escapeHTML(
+                product.icon
+              )}
 
-        }
+              ${escapeHTML(
+                product.name
+              )}
 
+            </div>
 
-        token =
-          result.token;
 
+            <button
+              class="small-btn delete-btn"
+              onclick="deleteProduct(${index})"
+            >
+              Xóa
+            </button>
 
-        sessionStorage.setItem(
-          "genzbaothe_admin_token",
-          token
-        );
+          </div>
 
 
-        const successBox =
-          document.getElementById(
-            "loginSuccess"
-          );
+          <div class="form-grid">
 
+            ${input(
+              "Ngân hàng",
+              `product.${index}.bank`,
+              product.bank
+            )}
 
-        if (successBox) {
+            ${input(
+              "Tên campaign",
+              `product.${index}.name`,
+              product.name
+            )}
 
-          successBox.style.display =
-            "block";
+            ${input(
+              "Loại sản phẩm",
+              `product.${index}.category`,
+              product.category
+            )}
 
-        }
+            ${input(
+              "Icon",
+              `product.${index}.icon`,
+              product.icon
+            )}
 
+            ${input(
+              "Badge",
+              `product.${index}.badge`,
+              product.badge
+            )}
 
-        loginButton.textContent =
-          "Đang tải...";
+            ${input(
+              "Hạn mức",
+              `product.${index}.limit`,
+              product.limit
+            )}
 
+            ${input(
+              "Kỳ hạn / điều kiện",
+              `product.${index}.term`,
+              product.term
+            )}
 
-        await loadAdmin();
+            ${input(
+              "Affiliate URL",
+              `product.${index}.affiliateUrl`,
+              product.affiliateUrl,
+              true
+            )}
 
-      }
+            ${textarea(
+              "Mô tả",
+              `product.${index}.description`,
+              product.description
+            )}
 
+          </div>
 
-      catch (error) {
+        </div>
 
-        console.error(
-          "Login error:",
-          error
-        );
+      `
+    )
+    .join("");
 
+}
 
-        showLoginError(
-          "Không thể kết nối tới server. Vui lòng thử lại."
-        );
 
-      }
+/* =========================
+   READ FORM
+========================= */
 
+function readForm() {
 
-      finally {
+  document
+    .querySelectorAll("[data-key]")
+    .forEach(
+      element => {
 
-        const button =
-          document.getElementById(
-            "loginButton"
-          );
+        const key =
+          element.dataset.key;
 
+        const value =
+          element.value;
 
-        if (button) {
-
-          button.disabled =
-            false;
-
-          button.textContent =
-            "Đăng nhập";
-
-        }
-
-      }
-
-    }
-
-
-    /* =========================
-       ADMIN API
-    ========================= */
-
-    async function adminAPI(
-      url,
-      options = {}
-    ) {
-
-      options.headers = {
-
-        ...(options.headers || {}),
-
-        "Authorization":
-          "Bearer " + token,
-
-        "Content-Type":
-          "application/json"
-
-      };
-
-
-      const response =
-        await fetch(
-          url,
-          options
-        );
-
-
-      if (
-        response.status === 401
-      ) {
-
-        sessionStorage.removeItem(
-          "genzbaothe_admin_token"
-        );
-
-        token = null;
-
-        showLogin();
-
-        throw new Error(
-          "Unauthorized"
-        );
-
-      }
-
-
-      return response;
-
-    }
-
-
-    /* =========================
-       LOAD ADMIN DATA
-    ========================= */
-
-    async function loadAdmin() {
-
-      try {
-
-        const response =
-          await adminAPI(
-            "/api/admin/content"
-          );
-
-
-        if (!response.ok) {
-
-          const result =
-            await response
-              .json()
-              .catch(
-                () => ({})
-              );
-
-
-          throw new Error(
-            result.error ||
-            "Không tải được dữ liệu."
-          );
-
-        }
-
-
-        data =
-          await response.json();
-
-
-        renderAdmin();
-
-      }
-
-
-      catch (error) {
-
-        console.error(
-          "Load admin error:",
-          error
-        );
+        const parts =
+          key.split(".");
 
 
         if (
-          error.message !==
-          "Unauthorized"
+          parts[0] === "product"
         ) {
 
-          alert(
-            error.message ||
-            "Không thể tải dữ liệu."
-          );
+          const index =
+            Number(parts[1]);
+
+          const field =
+            parts[2];
+
+
+          if (
+            data.products[index]
+          ) {
+
+            data.products[index][field] =
+              value;
+
+          }
+
+        }
+
+
+        else if (
+          parts[0] === "stats"
+        ) {
+
+          data.site.stats[
+            parts[1]
+          ] = value;
+
+        }
+
+
+        else {
+
+          data.site[
+            key
+          ] = value;
 
         }
 
       }
+    );
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+async function saveAll() {
+
+  readForm();
+
+
+  const status =
+    document.getElementById(
+      "status"
+    );
+
+
+  status.textContent =
+    "Đang lưu...";
+
+
+  try {
+
+    const response =
+      await adminAPI(
+        "/api/admin/content",
+        {
+
+          method: "PUT",
+
+          body:
+            JSON.stringify(data)
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Không thể lưu dữ liệu."
+      );
 
     }
 
 
-    /* =========================
-       INPUT
-    ========================= */
+    status.textContent =
+      "Đã lưu ✓";
 
-    function input(
-      label,
-      key,
-      value,
-      full = false
-    ) {
 
-      return `
+    setTimeout(
+      () => {
 
-        <div class="field ${full ? "full" : ""}">
+        status.textContent =
+          "";
 
-          <label>
-            ${label}
-          </label>
+      },
+      2500
+    );
 
-          <input
-            data-key="${key}"
-            value="${escapeAttr(value)}"
-          >
+  }
 
-        </div>
 
-      `;
+  catch (error) {
 
-    }
+    console.error(error);
 
+    status.textContent =
+      "Lưu thất bại";
 
-    /* =========================
-       TEXTAREA
-    ========================= */
+  }
 
-    function textarea(
-      label,
-      key,
-      value
-    ) {
+}
 
-      return `
 
-        <div class="field full">
+/* =========================
+   ADD PRODUCT
+========================= */
 
-          <label>
-            ${label}
-          </label>
+function addProduct() {
 
-          <textarea
-            data-key="${key}"
-          >${escapeHTML(value)}</textarea>
+  readForm();
 
-        </div>
 
-      `;
+  data.products.push({
 
-    }
+    id:
+      "campaign-" +
+      Date.now(),
 
+    bank:
+      "Ngân hàng",
 
-    /* =========================
-       ESCAPE HTML
-    ========================= */
+    name:
+      "Sản phẩm mới",
 
-    function escapeHTML(value) {
+    category:
+      "Khoản vay",
 
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    icon:
+      "💰",
 
-    }
+    badge:
+      "Mới",
 
+    description:
+      "Mô tả sản phẩm",
 
-    function escapeAttr(value) {
+    limit:
+      "Đang cập nhật",
 
-      return escapeHTML(value);
+    term:
+      "Đang cập nhật",
 
-    }
+    affiliateUrl:
+      "https://example.com"
 
+  });
 
-    /* =========================
-       RENDER ADMIN
-    ========================= */
 
-    function renderAdmin() {
+  renderAdmin();
 
-      const site =
-        data.site;
 
-
-      document.getElementById(
-        "app"
-      ).innerHTML = `
-
-        <div class="admin">
-
-
-          <aside class="sidebar">
-
-            <div class="sidebar-brand">
-              G GenZ BaoThe
-            </div>
-
-
-            <button
-              class="active"
-              onclick="scrollToSection('site')"
-            >
-              📝 Nội dung
-            </button>
-
-
-            <button
-              onclick="scrollToSection('stats')"
-            >
-              📊 Thống kê
-            </button>
-
-
-            <button
-              onclick="scrollToSection('products')"
-            >
-              💳 Campaign
-            </button>
-
-
-            <button
-              onclick="window.open('/','_blank')"
-            >
-              🌐 Xem website
-            </button>
-
-
-            <button
-              onclick="logout()"
-            >
-              ↪ Đăng xuất
-            </button>
-
-          </aside>
-
-
-          <main class="content">
-
-
-            <div class="topbar">
-
-              <h1>
-                Chỉnh sửa website
-              </h1>
-
-
-              <div>
-
-                <span
-                  id="status"
-                  class="status"
-                ></span>
-
-
-                <button
-                  class="save-btn"
-                  onclick="saveAll()"
-                >
-                  Lưu thay đổi
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <!-- SITE -->
-
-            <section
-              class="panel"
-              id="site"
-            >
-
-              <h2>
-                🏠 Trang chủ
-              </h2>
-
-
-              <div class="form-grid">
-
-                ${input(
-                  "Tên website",
-                  "brand",
-                  site.brand
-                )}
-
-
-                ${input(
-                  "Eyebrow",
-                  "heroEyebrow",
-                  site.heroEyebrow
-                )}
-
-
-                ${input(
-                  "Tiêu đề lớn",
-                  "heroTitle",
-                  site.heroTitle
-                )}
-
-
-                ${input(
-                  "Dòng chữ màu xanh",
-                  "heroHighlight",
-                  site.heroHighlight
-                )}
-
-
-                ${textarea(
-                  "Mô tả Hero",
-                  "heroDescription",
-                  site.heroDescription
-                )}
-
-
-                ${input(
-                  "Tiêu đề phần so sánh",
-                  "compareTitle",
-                  site.compareTitle
-                )}
-
-
-                ${textarea(
-                  "Mô tả phần so sánh",
-                  "compareDescription",
-                  site.compareDescription
-                )}
-
-
-                ${input(
-                  "Tiêu đề CTA",
-                  "ctaTitle",
-                  site.ctaTitle
-                )}
-
-
-                ${textarea(
-                  "Mô tả CTA",
-                  "ctaDescription",
-                  site.ctaDescription
-                )}
-
-
-                ${textarea(
-                  "Mô tả Footer",
-                  "footerDescription",
-                  site.footerDescription
-                )}
-
-              </div>
-
-            </section>
-
-
-            <!-- STATS -->
-
-            <section
-              class="panel"
-              id="stats"
-            >
-
-              <h2>
-                📊 Thống kê
-              </h2>
-
-
-              <div class="form-grid">
-
-                ${input(
-                  "Số sản phẩm",
-                  "stats.products",
-                  site.stats.products
-                )}
-
-
-                ${input(
-                  "Người dùng",
-                  "stats.users",
-                  site.stats.users
-                )}
-
-
-                ${input(
-                  "Tỉnh thành",
-                  "stats.cities",
-                  site.stats.cities
-                )}
-
-
-                ${input(
-                  "Hỗ trợ",
-                  "stats.support",
-                  site.stats.support
-                )}
-
-              </div>
-
-            </section>
-
-
-            <!-- PRODUCTS -->
-
-            <section
-              class="panel"
-              id="products"
-            >
-
-              <h2>
-
-                💳 Sản phẩm / Campaign
-
-                <button
-                  class="small-btn add-btn"
-                  onclick="addProduct()"
-                >
-                  + Thêm campaign
-                </button>
-
-              </h2>
-
-
-              <div
-                class="product-list"
-                id="productList"
-              >
-
-                ${renderProducts()}
-
-              </div>
-
-            </section>
-
-
-          </main>
-
-        </div>
-
-      `;
-
-    }
-
-
-    /* =========================
-       RENDER PRODUCTS
-    ========================= */
-
-    function renderProducts() {
-
-      return data.products
-        .map(
-          (product, index) => `
-
-            <div
-              class="product"
-              data-product="${index}"
-            >
-
-              <div class="product-header">
-
-                <div class="product-title">
-
-                  ${escapeHTML(
-                    product.icon
-                  )}
-
-                  ${escapeHTML(
-                    product.name
-                  )}
-
-                </div>
-
-
-                <button
-                  class="small-btn delete-btn"
-                  onclick="deleteProduct(${index})"
-                >
-                  Xóa
-                </button>
-
-              </div>
-
-
-              <div class="form-grid">
-
-
-                ${input(
-                  "Ngân hàng",
-                  `product.${index}.bank`,
-                  product.bank
-                )}
-
-
-                ${input(
-                  "Tên campaign",
-                  `product.${index}.name`,
-                  product.name
-                )}
-
-
-                ${input(
-                  "Loại sản phẩm",
-                  `product.${index}.category`,
-                  product.category
-                )}
-
-
-                ${input(
-                  "Icon",
-                  `product.${index}.icon`,
-                  product.icon
-                )}
-
-
-                ${input(
-                  "Badge",
-                  `product.${index}.badge`,
-                  product.badge
-                )}
-
-
-                ${input(
-                  "Hạn mức",
-                  `product.${index}.limit`,
-                  product.limit
-                )}
-
-
-                ${input(
-                  "Kỳ hạn / điều kiện",
-                  `product.${index}.term`,
-                  product.term
-                )}
-
-
-                ${input(
-                  "Affiliate URL",
-                  `product.${index}.affiliateUrl`,
-                  product.affiliateUrl,
-                  true
-                )}
-
-
-                ${textarea(
-                  "Mô tả",
-                  `product.${index}.description`,
-                  product.description
-                )}
-
-              </div>
-
-            </div>
-
-          `
-        )
-        .join("");
-
-    }
-
-
-    /* =========================
-       READ FORM
-    ========================= */
-
-    function readForm() {
+  setTimeout(
+    () => {
 
       document
-        .querySelectorAll(
-          "[data-key]"
-        )
-        .forEach(
-          element => {
-
-            const key =
-              element.dataset.key;
-
-
-            const value =
-              element.value;
-
-
-            const parts =
-              key.split(".");
-
-
-            if (
-              parts[0] === "product"
-            ) {
-
-              const index =
-                Number(parts[1]);
-
-
-              const field =
-                parts[2];
-
-
-              if (
-                data.products[index]
-              ) {
-
-                data.products[index][field] =
-                  value;
-
-              }
-
-            }
-
-
-            else if (
-              parts[0] === "stats"
-            ) {
-
-              data.site.stats[
-                parts[1]
-              ] = value;
-
-            }
-
-
-            else {
-
-              data.site[
-                key
-              ] = value;
-
-            }
-
-          }
-        );
-
-    }
-
-
-    /* =========================
-       SAVE
-    ========================= */
-
-    async function saveAll() {
-
-      readForm();
-
-
-      const status =
-        document.getElementById(
-          "status"
-        );
-
-
-      status.textContent =
-        "Đang lưu...";
-
-
-      try {
-
-        const response =
-          await adminAPI(
-            "/api/admin/content",
-            {
-
-              method: "PUT",
-
-              body:
-                JSON.stringify(
-                  data
-                )
-
-            }
-          );
-
-
-        if (!response.ok) {
-
-          const result =
-            await response
-              .json()
-              .catch(
-                () => ({})
-              );
-
-
-          throw new Error(
-            result.error ||
-            "Save failed"
-          );
-
-        }
-
-
-        status.textContent =
-          "Đã lưu ✓";
-
-
-        setTimeout(
-          () => {
-
-            if (status) {
-              status.textContent = "";
-            }
-
-          },
-          2500
-        );
-
-      }
-
-
-      catch (error) {
-
-        console.error(
-          "Save error:",
-          error
-        );
-
-
-        status.textContent =
-          "Lưu thất bại";
-
-      }
-
-    }
-
-
-    /* =========================
-       ADD PRODUCT
-    ========================= */
-
-    function addProduct() {
-
-      readForm();
-
-
-      data.products.push({
-
-        id:
-          "campaign-" +
-          Date.now(),
-
-        bank:
-          "Ngân hàng",
-
-        name:
-          "Sản phẩm mới",
-
-        category:
-          "Khoản vay",
-
-        icon:
-          "💰",
-
-        badge:
-          "Mới",
-
-        description:
-          "Mô tả sản phẩm",
-
-        limit:
-          "Đang cập nhật",
-
-        term:
-          "Đang cập nhật",
-
-        affiliateUrl:
-          "https://example.com"
-
-      });
-
-
-      renderAdmin();
-
-
-      setTimeout(
-        () => {
-
-          const products =
-            document.getElementById(
-              "products"
-            );
-
-
-          if (products) {
-
-            products.scrollIntoView({
-              behavior: "smooth"
-            });
-
-          }
-
-        },
-        100
-      );
-
-    }
-
-
-    /* =========================
-       DELETE PRODUCT
-    ========================= */
-
-    function deleteProduct(index) {
-
-      if (
-        !confirm(
-          "Bạn có chắc muốn xóa campaign này?"
-        )
-      ) {
-
-        return;
-
-      }
-
-
-      readForm();
-
-
-      data.products.splice(
-        index,
-        1
-      );
-
-
-      renderAdmin();
-
-    }
-
-
-    /* =========================
-       SCROLL
-    ========================= */
-
-    function scrollToSection(id) {
-
-      const section =
-        document.getElementById(
-          id
-        );
-
-
-      if (section) {
-
-        section.scrollIntoView({
+        .getElementById("products")
+        ?.scrollIntoView({
           behavior: "smooth"
         });
 
-      }
+    },
+    100
+  );
 
-    }
-
-
-    /* =========================
-       LOGOUT
-    ========================= */
-
-    function logout() {
-
-      sessionStorage.removeItem(
-        "genzbaothe_admin_token"
-      );
-
-      token = null;
-
-      data = null;
-
-      showLogin();
-
-    }
+}
 
 
-    /* =========================
-       START
-    ========================= */
+/* =========================
+   DELETE PRODUCT
+========================= */
 
-    if (token) {
+function deleteProduct(index) {
 
-      loadAdmin();
+  if (
+    !confirm(
+      "Bạn có chắc muốn xóa campaign này?"
+    )
+  ) {
 
-    }
+    return;
 
-    else {
+  }
 
-      showLogin();
 
-    }
+  readForm();
 
-  </script>
+
+  data.products.splice(
+    index,
+    1
+  );
+
+
+  renderAdmin();
+
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToSection(id) {
+
+  document
+    .getElementById(id)
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+  sessionStorage.removeItem(
+    "genzbaothe_admin_token"
+  );
+
+  token = null;
+
+  data = null;
+
+  showLogin();
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+if (token) {
+
+  loadAdmin();
+
+}
+
+else {
+
+  showLogin();
+
+}
+
+</script>
 
 </body>
 
