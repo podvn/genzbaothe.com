@@ -1,58 +1,99 @@
+```js
 function json(data, status = 200) {
+
   return new Response(
     JSON.stringify(data),
     {
       status,
+
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store"
+        "Content-Type":
+          "application/json",
+
+        "Cache-Control":
+          "no-store"
       }
     }
   );
+
 }
 
-async function sign(value, secret) {
 
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secret),
-    {
-      name: "HMAC",
-      hash: "SHA-256"
-    },
-    false,
-    ["sign"]
-  );
+/* =========================
+   HMAC SHA-256
+========================= */
+
+async function sign(
+  value,
+  secret
+) {
+
+  const key =
+    await crypto.subtle.importKey(
+      "raw",
+
+      new TextEncoder()
+        .encode(secret),
+
+      {
+        name: "HMAC",
+        hash: "SHA-256"
+      },
+
+      false,
+
+      ["sign"]
+    );
+
 
   const signature =
     await crypto.subtle.sign(
       "HMAC",
       key,
-      new TextEncoder().encode(value)
+
+      new TextEncoder()
+        .encode(value)
     );
+
 
   return btoa(
     String.fromCharCode(
-      ...new Uint8Array(signature)
+      ...new Uint8Array(
+        signature
+      )
     )
   )
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
     .replace(/=+$/, "");
+
 }
 
-async function createToken(secret) {
+
+/* =========================
+   CREATE TOKEN
+========================= */
+
+async function createToken(
+  secret
+) {
 
   const payload = {
+
     exp:
       Date.now() +
       24 * 60 * 60 * 1000
+
   };
+
 
   const payloadString =
     btoa(
-      JSON.stringify(payload)
+      JSON.stringify(
+        payload
+      )
     );
+
 
   const signature =
     await sign(
@@ -60,41 +101,58 @@ async function createToken(secret) {
       secret
     );
 
+
   return (
     payloadString +
     "." +
     signature
   );
+
 }
+
+
+/* =========================
+   POST LOGIN
+========================= */
 
 export async function onRequestPost({
   request,
   env
 }) {
 
+  /* -------------------------
+     CHECK ENV
+  ------------------------- */
+
   if (!env.ADMIN_PASSWORD) {
 
     return json(
       {
         error:
-          "ADMIN_PASSWORD chưa được cấu hình."
+          "ADMIN_PASSWORD chưa được cấu hình trên Cloudflare."
       },
       500
     );
 
   }
+
 
   if (!env.ADMIN_SECRET) {
 
     return json(
       {
         error:
-          "ADMIN_SECRET chưa được cấu hình."
+          "ADMIN_SECRET chưa được cấu hình trên Cloudflare."
       },
       500
     );
 
   }
+
+
+  /* -------------------------
+     READ REQUEST
+  ------------------------- */
 
   let body;
 
@@ -103,22 +161,30 @@ export async function onRequestPost({
     body =
       await request.json();
 
-  } catch {
+  }
+
+  catch {
 
     return json(
       {
         error:
-          "Dữ liệu đăng nhập không hợp lệ."
+          "Request đăng nhập không hợp lệ."
       },
       400
     );
 
   }
 
+
+  /* -------------------------
+     PASSWORD
+  ------------------------- */
+
   const password =
     typeof body?.password === "string"
       ? body.password
       : "";
+
 
   if (!password) {
 
@@ -131,6 +197,11 @@ export async function onRequestPost({
     );
 
   }
+
+
+  /* -------------------------
+     CHECK PASSWORD
+  ------------------------- */
 
   if (
     password !==
@@ -147,17 +218,28 @@ export async function onRequestPost({
 
   }
 
+
+  /* -------------------------
+     CREATE TOKEN
+  ------------------------- */
+
   const token =
     await createToken(
       env.ADMIN_SECRET
     );
 
+
+  /* -------------------------
+     SUCCESS
+  ------------------------- */
+
   return json(
     {
       success: true,
-      token
+      token: token
     },
     200
   );
 
 }
+```
