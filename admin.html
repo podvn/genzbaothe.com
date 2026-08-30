@@ -602,13 +602,21 @@
               () => ({})
             );
 
+if (!response.ok) {
 
-        if (!response.ok) {
+  console.log("STATUS:", response.status);
+  console.log("RESPONSE:", result);
 
-          showLoginError(
-            result.error ||
-            "Đăng nhập thất bại."
-          );
+  showLoginError(
+    result.error ||
+    `Đăng nhập thất bại. HTTP ${response.status}`
+  );
+
+  passwordInput.value = "";
+  passwordInput.focus();
+
+  return;
+}
 
           passwordInput.value = "";
 
