@@ -1,706 +1,669 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GenZ BaoThe - Tài chính thông minh cho Gen Z</title>
-<meta name="description" content="GenZ BaoThe - So sánh khoản vay, thẻ tín dụng và ngân hàng dễ dàng.">
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Be Vietnam Pro", Arial, sans-serif;
-  color: #11151c;
-  background: #fff;
-  line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button,
-input {
-  font-family: inherit;
-}
-
-.container {
-  width: min(1160px, calc(100% - 36px));
-  margin: auto;
-}
-
-/* ================= HEADER ================= */
-
-header {
-  height: 76px;
-  border-bottom: 1px solid #edf0f3;
-  background: rgba(255,255,255,.96);
-  backdrop-filter: blur(15px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 35px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 19px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.logo-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 11px;
-  background: #baff28;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  color: #111;
-}
-
-.logo span {
-  font-weight: 800;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  margin-left: auto;
-}
-
-.nav-links a {
-  font-size: 13px;
-  color: #626a75;
-  transition: .2s;
-}
-
-.nav-links a:hover {
-  color: #111;
-}
-
-.nav-btn {
-  border: 1px solid #dfe3e7;
-  border-radius: 11px;
-  padding: 10px 17px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.mobile-menu {
-  display: none;
-  border: 0;
-  background: none;
-  font-size: 24px;
-}
-
-/* ================= HERO ================= */
-
-.hero {
-  background:
-    radial-gradient(circle at 85% 20%, rgba(186,255,40,.25), transparent 30%),
-    linear-gradient(135deg,#f4f8ed,#f8fafc 55%,#edf4ff);
-  padding: 78px 0 80px;
-  overflow: hidden;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.eyebrow {
-  font-size: 10px;
-  letter-spacing: 1.8px;
-  font-weight: 800;
-  color: #727b87;
-}
-
-.hero h1 {
-  font-size: 53px;
-  line-height: 1.1;
-  letter-spacing: -2.8px;
-  margin: 14px 0 20px;
-}
-
-.hero h1 span {
-  color: #679600;
-}
-
-.hero-text {
-  color: #69727e;
-  font-size: 15px;
-  max-width: 630px;
-}
-
-/* SEARCH */
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 1px solid #dfe4e9;
-  padding: 6px;
-  border-radius: 15px;
-  max-width: 650px;
-  margin-top: 28px;
-  box-shadow: 0 15px 45px rgba(20,30,40,.06);
-}
-
-.search-icon {
-  font-size: 23px;
-  color: #737c87;
-  padding: 0 10px;
-}
-
-.search-box input {
-  flex: 1;
-  border: 0;
-  outline: 0;
-  min-width: 0;
-  font-size: 13px;
-}
-
-.search-box button {
-  border: 0;
-  background: #baff28;
-  color: #111;
-  border-radius: 10px;
-  padding: 12px 20px;
-  font-size: 12px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 14px;
-}
-
-.quick-links a {
-  background: #fff;
-  border: 1px solid #e3e7eb;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 10px;
-}
-
-/* HERO VISUAL */
-
-.hero-visual {
-  position: relative;
-  height: 390px;
-  display: grid;
-  place-items: center;
-}
-
-.hero-circle {
-  width: 290px;
-  height: 290px;
-  border-radius: 50%;
-  background: #baff28;
-}
-
-.dashboard {
-  position: absolute;
-  width: 310px;
-  background: #111923;
-  color: white;
-  padding: 25px;
-  border-radius: 23px;
-  box-shadow: 0 30px 70px rgba(17,25,35,.25);
-  transform: rotate(3deg);
-}
-
-.dashboard small {
-  color: #aeb7c1;
-  font-size: 9px;
-  letter-spacing: 1px;
-}
-
-.dashboard h3 {
-  font-size: 21px;
-  margin: 5px 0 18px;
-}
-
-.dashboard-item {
-  background: #1d2834;
-  border: 1px solid #303b48;
-  border-radius: 12px;
-  padding: 13px;
-  margin: 8px 0;
-  font-size: 11px;
-}
-
-.dashboard-item strong {
-  float: right;
-  color: #baff28;
-}
-
-/* ================= STATS ================= */
-
-.stats {
-  background: #111923;
-  color: #fff;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  padding: 26px 0;
-}
-
-.stat {
-  text-align: center;
-  border-right: 1px solid #303943;
-}
-
-.stat:last-child {
-  border-right: 0;
-}
-
-.stat strong {
-  display: block;
-  font-size: 26px;
-}
-
-.stat span {
-  color: #a3acb7;
-  font-size: 10px;
-}
-
-/* ================= SECTION ================= */
-
-.section {
-  padding: 88px 0;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-bottom: 28px;
-}
-
-.section h2 {
-  font-size: 34px;
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-top: 8px;
-}
-
-.section-head > a {
-  font-size: 11px;
-  font-weight: 800;
-}
-
-/* ================= PRODUCTS ================= */
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 17px;
-}
-
-.product-card {
-  border: 1px solid #e3e7eb;
-  border-radius: 18px;
-  padding: 21px;
-  transition: .2s;
-  background: white;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(20,30,40,.08);
-}
-
-.product-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-}
-
-.product-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
-  background: #f2f5f7;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
-}
-
-.badge {
-  background: #eef8d8;
-  color: #527900;
-  padding: 5px 9px;
-  border-radius: 99px;
-  font-size: 9px;
-  font-weight: 800;
-}
-
-.product-brand {
-  color: #8a929d;
-  font-size: 10px;
-  font-weight: 700;
-  margin-top: 17px;
-}
-
-.product-card h3 {
-  font-size: 16px;
-  margin: 4px 0;
-}
-
-.product-card p {
-  color: #737c87;
-  font-size: 11px;
-  min-height: 44px;
-}
-
-.product-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 15px;
-}
-
-.info-box {
-  background: #f7f8fa;
-  padding: 9px;
-  border-radius: 10px;
-}
-
-.info-box small {
-  display: block;
-  color: #8b939e;
-  font-size: 8px;
-}
-
-.info-box strong {
-  font-size: 10px;
-}
-
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 17px;
-}
-
-.product-footer span {
-  color: #7c8590;
-  font-size: 9px;
-}
-
-.btn {
-  border: 0;
-  border-radius: 11px;
-  padding: 11px 16px;
-  font-size: 11px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.btn-dark {
-  background: #111923;
-  color: white;
-}
-
-.btn-lime {
-  background: #baff28;
-  color: #111;
-}
-
-/* ================= DARK SECTION ================= */
-
-.dark-section {
-  background: #111923;
-  color: white;
-  padding: 90px 0;
-}
-
-.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.dark-section h2 {
-  font-size: 35px;
-  line-height: 1.2;
-  letter-spacing: -1px;
-  margin: 9px 0 16px;
-}
-
-.dark-section p {
-  color: #aab3be;
-  font-size: 14px;
-  max-width: 520px;
-  margin-bottom: 25px;
-}
-
-.score-box {
-  background: #1b2632;
-  border: 1px solid #303b47;
-  padding: 14px;
-  border-radius: 20px;
-}
-
-.score-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 18px 10px;
-  border-bottom: 1px solid #303b47;
-  font-size: 12px;
-}
-
-.score-row:last-child {
-  border-bottom: 0;
-}
-
-.score-row strong {
-  color: #baff28;
-}
-
-/* ================= STEPS ================= */
-
-.center {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
-}
-
-.step {
-  border: 1px solid #e5e9ed;
-  border-radius: 17px;
-  padding: 23px;
-}
-
-.step-number {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
-  background: #baff28;
-  font-size: 10px;
-  font-weight: 900;
-}
-
-.step h3 {
-  font-size: 14px;
-  margin: 18px 0 5px;
-}
-
-.step p {
-  color: #78818c;
-  font-size: 11px;
-}
-
-/* ================= CTA ================= */
-
-.cta {
-  padding: 65px 0;
-}
-
-.cta-box {
-  background: #baff28;
-  border-radius: 24px;
-  padding: 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cta-box h2 {
-  font-size: 33px;
-  margin: 8px 0;
-  letter-spacing: -1px;
-}
-
-.cta-box p {
-  color: #465613;
-  font-size: 12px;
-}
-
-/* ================= FOOTER ================= */
-
-footer {
-  background: #111923;
-  color: white;
-  padding: 55px 0 20px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 50px;
-}
-
-.footer-title {
-  font-weight: 700;
-  font-size: 13px;
-  margin-bottom: 14px;
-}
-
-footer p,
-footer a {
-  color: #8c96a2;
-  font-size: 11px;
-}
-
-footer a {
-  display: block;
-  margin: 8px 0;
-}
-
-.footer-bottom {
-  border-top: 1px solid #2c3641;
-  margin-top: 40px;
-  padding-top: 18px;
-  color: #68727e;
-  font-size: 9px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:800px) {
-
-  .nav-links,
-  .nav-btn {
-    display: none;
-  }
-
-  .mobile-menu {
-    display: block;
-    margin-left: auto;
-  }
-
-  .hero {
-    padding: 55px 0;
-  }
-
-  .hero-grid,
-  .two-columns {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .hero-visual {
-    display: none;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
-  }
-
-  .stat:nth-child(2) {
-    border-right: 0;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .steps {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .cta-box {
-    display: block;
-    padding: 30px;
-  }
-
-  .cta-box .btn {
-    margin-top: 20px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media(max-width:480px) {
-
-  .container {
-    width: calc(100% - 28px);
-  }
-
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .section h2,
-  .dark-section h2,
-  .cta-box h2 {
-    font-size: 28px;
-  }
-
-  .search-box button {
-    padding: 11px 13px;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GenZ BaoThe</title>
+
+  <meta
+    name="description"
+    content="GenZ BaoThe - So sánh sản phẩm tài chính đơn giản hơn."
+  >
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", Arial, sans-serif;
+      color: #111923;
+      background: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      height: 76px;
+      border-bottom: 1px solid #edf0f3;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .logo-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
+      background: #baff28;
+      display: grid;
+      place-items: center;
+      color: #111;
+      font-weight: 900;
+    }
+
+    .navlinks {
+      margin-left: auto;
+      display: flex;
+      gap: 26px;
+      font-size: 13px;
+      color: #626a75;
+    }
+
+    .navlinks a:hover {
+      color: #111923;
+    }
+
+    .navbtn {
+      border: 1px solid #dfe3e7;
+      border-radius: 11px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 78px 0 82px;
+
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(186,255,40,.25),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #f4f8ed,
+          #f8fafc 55%,
+          #edf4ff
+        );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      font-weight: 800;
+      color: #727b87;
+    }
+
+    .hero h1 {
+      font-size: 53px;
+      line-height: 1.1;
+      letter-spacing: -2.8px;
+      margin: 14px 0 20px;
+    }
+
+    .hero h1 span {
+      color: #679600;
+    }
+
+    .hero p {
+      color: #69727e;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 650px;
+    }
+
+    .search {
+      display: flex;
+      background: #fff;
+      border: 1px solid #dfe4e9;
+      padding: 6px;
+      border-radius: 15px;
+      max-width: 650px;
+      margin-top: 28px;
+      box-shadow: 0 15px 45px rgba(20,30,40,.06);
+    }
+
+    .search input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      font-size: 13px;
+      padding: 0 10px;
+      min-width: 0;
+    }
+
+    .search button {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #baff28;
+      color: #111;
+    }
+
+    .quick {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .quick a {
+      background: #fff;
+      border: 1px solid #e3e7eb;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 10px;
+    }
+
+    /* =========================
+       HERO VISUAL
+    ========================= */
+
+    .visual {
+      height: 390px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .circle {
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      background: #baff28;
+    }
+
+    .dash {
+      position: absolute;
+      width: 310px;
+      background: #111923;
+      color: #fff;
+      padding: 25px;
+      border-radius: 23px;
+      box-shadow: 0 30px 70px rgba(17,25,35,.25);
+      transform: rotate(3deg);
+    }
+
+    .dash small {
+      color: #aeb7c1;
+      font-size: 9px;
+    }
+
+    .dash h3 {
+      font-size: 21px;
+      margin: 5px 0 18px;
+    }
+
+    .dashitem {
+      background: #1d2834;
+      border: 1px solid #303b48;
+      border-radius: 12px;
+      padding: 13px;
+      margin: 8px 0;
+      font-size: 11px;
+    }
+
+    .dashitem strong {
+      float: right;
+      color: #baff28;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      background: #111923;
+      color: #fff;
+    }
+
+    .statsgrid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      padding: 26px 0;
+    }
+
+    .stat {
+      text-align: center;
+      border-right: 1px solid #303943;
+    }
+
+    .stat:last-child {
+      border: 0;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+    }
+
+    .stat span {
+      color: #a3acb7;
+      font-size: 10px;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .sectionhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section h2 {
+      font-size: 34px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin: 8px 0 0;
+    }
+
+    .sectionhead > a {
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 17px;
+    }
+
+    .card {
+      border: 1px solid #e3e7eb;
+      border-radius: 18px;
+      padding: 21px;
+      transition: .2s;
+      background: #fff;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(20,30,40,.08);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      background: #f2f5f7;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .badge {
+      background: #eef8d8;
+      color: #527900;
+      padding: 5px 9px;
+      border-radius: 99px;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .brand {
+      color: #8a929d;
+      font-size: 10px;
+      font-weight: 700;
+      margin-top: 17px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin: 4px 0;
+    }
+
+    .card p {
+      color: #737c87;
+      font-size: 11px;
+      line-height: 1.6;
+      min-height: 52px;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .ibox {
+      background: #f7f8fa;
+      padding: 9px;
+      border-radius: 10px;
+    }
+
+    .ibox small {
+      display: block;
+      color: #8b939e;
+      font-size: 8px;
+      margin-bottom: 3px;
+    }
+
+    .ibox strong {
+      font-size: 10px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 17px;
+    }
+
+    .foot span {
+      color: #7c8590;
+      font-size: 9px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 15px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #111923;
+      color: #fff;
+    }
+
+    .lime {
+      background: #baff28;
+      color: #111;
+    }
+
+    /* =========================
+       DARK SECTION
+    ========================= */
+
+    .dark {
+      background: #111923;
+      color: #fff;
+      padding: 90px 0;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .dark h2 {
+      font-size: 35px;
+      line-height: 1.2;
+      margin: 9px 0 16px;
+    }
+
+    .dark p {
+      color: #aab3be;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .scores {
+      background: #1b2632;
+      border: 1px solid #303b47;
+      padding: 14px;
+      border-radius: 20px;
+    }
+
+    .score {
+      display: flex;
+      justify-content: space-between;
+      padding: 18px 10px;
+      border-bottom: 1px solid #303b47;
+      font-size: 12px;
+    }
+
+    .score:last-child {
+      border: 0;
+    }
+
+    .score strong {
+      color: #baff28;
+    }
+
+    /* =========================
+       HOW
+    ========================= */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .step {
+      border: 1px solid #e5e9ed;
+      border-radius: 17px;
+      padding: 23px;
+    }
+
+    .num {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: #baff28;
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      font-size: 14px;
+      margin: 18px 0 5px;
+    }
+
+    .step p {
+      color: #78818c;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 65px 0;
+    }
+
+    .ctabox {
+      background: #baff28;
+      border-radius: 24px;
+      padding: 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ctabox h2 {
+      font-size: 33px;
+      margin: 8px 0;
+    }
+
+    .ctabox p {
+      color: #465613;
+      font-size: 12px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111923;
+      color: #fff;
+      padding: 55px 0 20px;
+    }
+
+    .footgrid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    footer p,
+    footer a {
+      color: #8c96a2;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    footer a {
+      display: block;
+      margin: 8px 0;
+    }
+
+    .bottom {
+      border-top: 1px solid #2c3641;
+      margin-top: 40px;
+      padding-top: 18px;
+      color: #68727e;
+      font-size: 9px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:800px) {
+
+      .navlinks,
+      .navbtn {
+        display: none;
+      }
+
+      .hero-grid,
+      .two {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        display: none;
+      }
+
+      .statsgrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .stat:nth-child(2) {
+        border: 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ctabox {
+        display: block;
+      }
+
+      .footgrid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+
+    @media(max-width:480px) {
+
+      .steps,
+      .footgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
+
   <div class="container nav">
 
-    <a href="#" class="logo">
-      <div class="logo-icon">G</div>
-      GenZ <span>BaoThe</span>
+    <a class="logo" href="/">
+      <span class="logo-icon">G</span>
+      <span id="brand">GenZ BaoThe</span>
     </a>
 
-    <nav class="nav-links">
+    <nav class="navlinks">
       <a href="#home">Trang chủ</a>
       <a href="#products">Khoản vay</a>
       <a href="#products">Thẻ tín dụng</a>
@@ -708,107 +671,222 @@ footer a {
       <a href="#how">Hướng dẫn</a>
     </nav>
 
-    <a href="#contact" class="nav-btn">
+    <a class="navbtn" href="#contact">
       Tư vấn
     </a>
 
-    <button class="mobile-menu">
-      ☰
-    </button>
-
   </div>
+
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+     MAIN
+========================= -->
 
-<section class="hero" id="home">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <span class="eyebrow">
-        GENZ BAOTHE • SMART MONEY
-      </span>
-
-      <h1>
-        Tìm đúng sản phẩm tài chính.
-        <br>
-        <span>Đơn giản hơn.</span>
-      </h1>
-
-      <p class="hero-text">
-        So sánh khoản vay, thẻ tín dụng và ngân hàng
-        theo nhu cầu của bạn. Thông tin rõ ràng,
-        dễ hiểu và dễ lựa chọn.
-      </p>
+<main id="home">
 
 
-      <div class="search-box">
+  <!-- HERO -->
 
-        <div class="search-icon">
-          ⌕
+  <section class="hero">
+
+    <div class="container hero-grid">
+
+      <div>
+
+        <div
+          class="eyebrow"
+          id="heroEyebrow"
+        ></div>
+
+        <h1 id="heroTitle"></h1>
+
+        <p id="heroDescription"></p>
+
+
+        <div class="search">
+
+          <input
+            id="search"
+            placeholder="Bạn đang tìm khoản vay, thẻ hay ngân hàng?"
+          >
+
+          <button onclick="filterProducts()">
+            Tìm kiếm
+          </button>
+
         </div>
 
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Bạn đang tìm khoản vay, thẻ hay ngân hàng?"
-        >
 
-        <button onclick="searchProducts()">
-          Tìm kiếm
-        </button>
+        <div class="quick">
+
+          <a href="#products">
+            💰 Khoản vay
+          </a>
+
+          <a href="#products">
+            💳 Thẻ tín dụng
+          </a>
+
+          <a href="#products">
+            🏦 Ngân hàng
+          </a>
+
+        </div>
 
       </div>
 
 
-      <div class="quick-links">
+      <div class="visual">
 
-        <a href="#products">
-          💰 Khoản vay
-        </a>
+        <div class="circle"></div>
 
-        <a href="#products">
-          💳 Thẻ tín dụng
-        </a>
+        <div class="dash">
 
-        <a href="#products">
-          🏦 Ngân hàng
-        </a>
+          <small>
+            GỢI Ý CHO BẠN
+          </small>
+
+          <h3>
+            3 lựa chọn phù hợp
+          </h3>
+
+          <div class="dashitem">
+            💳 Thẻ tín dụng
+            <strong>96%</strong>
+          </div>
+
+          <div class="dashitem">
+            🏦 Ngân hàng số
+            <strong>92%</strong>
+          </div>
+
+          <div class="dashitem">
+            💰 Khoản vay
+            <strong>88%</strong>
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
+  </section>
 
-    <div class="hero-visual">
 
-      <div class="hero-circle"></div>
+  <!-- STATS -->
 
-      <div class="dashboard">
+  <section class="stats">
 
-        <small>
-          GỢI Ý CHO BẠN
-        </small>
+    <div class="container statsgrid">
 
-        <h3>
-          3 lựa chọn phù hợp
-        </h3>
+      <div class="stat">
+        <strong id="sProducts">150+</strong>
+        <span>Sản phẩm</span>
+      </div>
 
-        <div class="dashboard-item">
-          💳 Thẻ tín dụng
+      <div class="stat">
+        <strong id="sUsers">50K+</strong>
+        <span>Người dùng</span>
+      </div>
+
+      <div class="stat">
+        <strong id="sCities">63</strong>
+        <span>Tỉnh thành</span>
+      </div>
+
+      <div class="stat">
+        <strong id="sSupport">24/7</strong>
+        <span>Hỗ trợ</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+
+  <section
+    class="section"
+    id="products"
+  >
+
+    <div class="container">
+
+      <div class="sectionhead">
+
+        <div>
+
+          <span class="eyebrow">
+            ĐƯỢC QUAN TÂM
+          </span>
+
+          <h2>
+            Sản phẩm nổi bật
+          </h2>
+
+        </div>
+
+        <a href="#products">
+          Xem tất cả →
+        </a>
+
+      </div>
+
+
+      <div
+        class="grid"
+        id="productGrid"
+      ></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMPARE -->
+
+  <section class="dark">
+
+    <div class="container two">
+
+      <div>
+
+        <span class="eyebrow">
+          SO SÁNH DỄ HƠN
+        </span>
+
+        <h2 id="compareTitle"></h2>
+
+        <p id="compareDescription"></p>
+
+        <a
+          href="#products"
+          class="btn lime"
+        >
+          Khám phá sản phẩm →
+        </a>
+
+      </div>
+
+
+      <div class="scores">
+
+        <div class="score">
+          <span>💳 Thẻ tín dụng</span>
           <strong>96%</strong>
         </div>
 
-        <div class="dashboard-item">
-          🏦 Ngân hàng số
+        <div class="score">
+          <span>🏦 Ngân hàng</span>
           <strong>92%</strong>
         </div>
 
-        <div class="dashboard-item">
-          💰 Khoản vay
+        <div class="score">
+          <span>💰 Khoản vay</span>
           <strong>88%</strong>
         </div>
 
@@ -816,528 +894,146 @@ footer a {
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- ================= STATS ================= -->
+  <!-- HOW -->
 
-<section class="stats">
+  <section
+    class="section"
+    id="how"
+  >
 
-  <div class="container stats-grid">
+    <div class="container">
 
-    <div class="stat">
-      <strong>150+</strong>
-      <span>Sản phẩm</span>
-    </div>
+      <div
+        style="
+          text-align:center;
+          margin-bottom:40px;
+        "
+      >
 
-    <div class="stat">
-      <strong>50K+</strong>
-      <span>Người dùng</span>
-    </div>
-
-    <div class="stat">
-      <strong>63</strong>
-      <span>Tỉnh thành</span>
-    </div>
-
-    <div class="stat">
-      <strong>24/7</strong>
-      <span>Hỗ trợ</span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section class="section" id="products">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
         <span class="eyebrow">
-          ĐƯỢC QUAN TÂM
+          4 BƯỚC
         </span>
 
         <h2>
-          Sản phẩm nổi bật
-        </h2>
-      </div>
-
-      <a href="#products">
-        Xem tất cả →
-      </a>
-
-    </div>
-
-
-    <div class="product-grid" id="productGrid">
-
-      <!-- PRODUCT 1 -->
-
-      <article class="product-card">
-
-        <div class="product-top">
-
-          <div class="product-icon">
-            💰
-          </div>
-
-          <span class="badge">
-            Nổi bật
-          </span>
-
-        </div>
-
-        <div class="product-brand">
-          VPBank
-        </div>
-
-        <h3>
-          Khoản vay tiêu dùng
-        </h3>
-
-        <p>
-          Giải pháp vay tiêu dùng linh hoạt,
-          phù hợp nhiều nhu cầu tài chính.
-        </p>
-
-        <div class="product-info">
-
-          <div class="info-box">
-            <small>
-              Hạn mức
-            </small>
-
-            <strong>
-              Đến 250 triệu
-            </strong>
-          </div>
-
-          <div class="info-box">
-            <small>
-              Kỳ hạn
-            </small>
-
-            <strong>
-              6 - 60 tháng
-            </strong>
-          </div>
-
-        </div>
-
-        <div class="product-footer">
-
-          <span>
-            Theo hồ sơ
-          </span>
-
-          <button
-            class="btn btn-dark"
-            onclick="affiliateClick('vpbank-vay','https://example.com')"
-          >
-            Đăng ký →
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- PRODUCT 2 -->
-
-      <article class="product-card">
-
-        <div class="product-top">
-
-          <div class="product-icon">
-            💳
-          </div>
-
-          <span class="badge">
-            Ưu đãi
-          </span>
-
-        </div>
-
-        <div class="product-brand">
-          TPBank
-        </div>
-
-        <h3>
-          Thẻ tín dụng quốc tế
-        </h3>
-
-        <p>
-          Nhiều lựa chọn ưu đãi,
-          phù hợp nhu cầu chi tiêu và mua sắm.
-        </p>
-
-        <div class="product-info">
-
-          <div class="info-box">
-            <small>
-              Miễn lãi
-            </small>
-
-            <strong>
-              Đến 55 ngày
-            </strong>
-          </div>
-
-          <div class="info-box">
-            <small>
-              Hạn mức
-            </small>
-
-            <strong>
-              Đến 500 triệu
-            </strong>
-          </div>
-
-        </div>
-
-        <div class="product-footer">
-
-          <span>
-            Nhiều ưu đãi
-          </span>
-
-          <button
-            class="btn btn-dark"
-            onclick="affiliateClick('tpbank-card','https://example.com')"
-          >
-            Đăng ký →
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- PRODUCT 3 -->
-
-      <article class="product-card">
-
-        <div class="product-top">
-
-          <div class="product-icon">
-            🏦
-          </div>
-
-          <span class="badge">
-            Digital
-          </span>
-
-        </div>
-
-        <div class="product-brand">
-          Cake
-        </div>
-
-        <h3>
-          Tài khoản ngân hàng số
-        </h3>
-
-        <p>
-          Trải nghiệm ngân hàng số,
-          mở tài khoản trực tuyến tiện lợi.
-        </p>
-
-        <div class="product-info">
-
-          <div class="info-box">
-            <small>
-              Mở tài khoản
-            </small>
-
-            <strong>
-              Online
-            </strong>
-          </div>
-
-          <div class="info-box">
-            <small>
-              Dịch vụ
-            </small>
-
-            <strong>
-              24/7
-            </strong>
-          </div>
-
-        </div>
-
-        <div class="product-footer">
-
-          <span>
-            Tài khoản số
-          </span>
-
-          <button
-            class="btn btn-dark"
-            onclick="affiliateClick('cake-bank','https://example.com')"
-          >
-            Đăng ký →
-          </button>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= COMPARE ================= -->
-
-<section class="dark-section">
-
-  <div class="container two-columns">
-
-    <div>
-
-      <span class="eyebrow">
-        SO SÁNH DỄ HƠN
-      </span>
-
-      <h2>
-        Đừng chọn theo cảm tính.
-      </h2>
-
-      <p>
-        GenZ BaoThe giúp bạn nhìn các tiêu chí
-        quan trọng trước khi quyết định:
-        hạn mức, chi phí, điều kiện và quyền lợi.
-      </p>
-
-      <a
-        href="#products"
-        class="btn btn-lime"
-      >
-        Khám phá sản phẩm →
-      </a>
-
-    </div>
-
-
-    <div class="score-box">
-
-      <div class="score-row">
-        <span>
-          💳 Thẻ tín dụng
-        </span>
-
-        <strong>
-          96%
-        </strong>
-      </div>
-
-      <div class="score-row">
-        <span>
-          🏦 Ngân hàng
-        </span>
-
-        <strong>
-          92%
-        </strong>
-      </div>
-
-      <div class="score-row">
-        <span>
-          💰 Khoản vay
-        </span>
-
-        <strong>
-          88%
-        </strong>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= HOW IT WORKS ================= -->
-
-<section class="section" id="how">
-
-  <div class="container">
-
-    <div class="center">
-
-      <span class="eyebrow">
-        4 BƯỚC
-      </span>
-
-      <h2>
-        Chọn sản phẩm thật đơn giản
-      </h2>
-
-    </div>
-
-
-    <div class="steps">
-
-      <div class="step">
-
-        <div class="step-number">
-          01
-        </div>
-
-        <h3>
-          Chọn nhu cầu
-        </h3>
-
-        <p>
-          Khoản vay, thẻ tín dụng
-          hoặc ngân hàng.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <div class="step-number">
-          02
-        </div>
-
-        <h3>
-          Lọc tiêu chí
-        </h3>
-
-        <p>
-          Xem thông tin phù hợp
-          với nhu cầu của bạn.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <div class="step-number">
-          03
-        </div>
-
-        <h3>
-          So sánh
-        </h3>
-
-        <p>
-          Đặt các lựa chọn
-          cạnh nhau.
-        </p>
-
-      </div>
-
-
-      <div class="step">
-
-        <div class="step-number">
-          04
-        </div>
-
-        <h3>
-          Đăng ký
-        </h3>
-
-        <p>
-          Chuyển sang đối tác
-          để hoàn tất đăng ký.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= CTA ================= -->
-
-<section class="cta" id="contact">
-
-  <div class="container">
-
-    <div class="cta-box">
-
-      <div>
-
-        <span class="eyebrow">
-          GENZ BAOTHE
-        </span>
-
-        <h2>
-          Bắt đầu lựa chọn hôm nay.
+          Chọn sản phẩm thật đơn giản
         </h2>
 
-        <p>
-          Khám phá các sản phẩm tài chính
-          được tổng hợp trên GenZ BaoThe.
-        </p>
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Chọn nhu cầu</h3>
+          <p>
+            Khoản vay, thẻ tín dụng hoặc ngân hàng.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Lọc tiêu chí</h3>
+          <p>
+            Xem thông tin phù hợp với nhu cầu.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="num">03</div>
+          <h3>So sánh</h3>
+          <p>
+            Đặt các lựa chọn cạnh nhau.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="num">04</div>
+          <h3>Đăng ký</h3>
+          <p>
+            Chuyển sang đối tác để hoàn tất.
+          </p>
+        </div>
 
       </div>
 
-      <a
-        href="#products"
-        class="btn btn-dark"
-      >
-        Xem sản phẩm →
-      </a>
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section
+    class="cta"
+    id="contact"
+  >
+
+    <div class="container">
+
+      <div class="ctabox">
+
+        <div>
+
+          <span class="eyebrow">
+            GENZ BAOTHE
+          </span>
+
+          <h2 id="ctaTitle"></h2>
+
+          <p id="ctaDescription"></p>
+
+        </div>
+
+        <a
+          href="#products"
+          class="btn"
+        >
+          Xem sản phẩm →
+        </a>
+
+      </div>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+</main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-  <div class="container footer-grid">
+  <div class="container footgrid">
 
     <div>
 
-      <a href="#" class="logo">
+      <div class="logo">
 
-        <div class="logo-icon">
+        <span class="logo-icon">
           G
-        </div>
+        </span>
 
-        GenZ <span>BaoThe</span>
+        <span id="footerBrand">
+          GenZ BaoThe
+        </span>
 
-      </a>
+      </div>
 
-      <p style="margin-top:15px;">
-        Nền tảng tổng hợp và so sánh
-        thông tin tài chính.
-      </p>
+      <p id="footerDescription"></p>
 
     </div>
 
 
     <div>
 
-      <div class="footer-title">
-        Sản phẩm
-      </div>
+      <b>Sản phẩm</b>
 
       <a href="#products">
         Khoản vay
@@ -1356,9 +1052,7 @@ footer a {
 
     <div>
 
-      <div class="footer-title">
-        Thông tin
-      </div>
+      <b>Thông tin</b>
 
       <a href="#contact">
         Liên hệ
@@ -1369,7 +1063,7 @@ footer a {
       </a>
 
       <a href="#">
-        Điều khoản sử dụng
+        Điều khoản
       </a>
 
     </div>
@@ -1377,7 +1071,7 @@ footer a {
   </div>
 
 
-  <div class="container footer-bottom">
+  <div class="container bottom">
 
     © 2026 GenZ BaoThe.
     Thông tin trên website chỉ mang tính tham khảo.
@@ -1389,98 +1083,447 @@ footer a {
 
 <script>
 
-/* ============================================
-   AFFILIATE TRACKING
-   ============================================ */
+/* =====================================================
+   DỮ LIỆU MẶC ĐỊNH
+   Website sẽ dùng phần này nếu API chưa kết nối.
+===================================================== */
 
-function affiliateClick(product, affiliateUrl) {
+const DEFAULT_DATA = {
 
-  /*
-    Lấy UTM từ URL hiện tại
-    Ví dụ:
+  site: {
 
-    https://genzbaothe.com/?utm_source=facebook&utm_campaign=card
-  */
+    brand: "GenZ BaoThe",
 
-  const params = new URLSearchParams(
-    window.location.search
-  );
+    heroEyebrow:
+      "GENZ BAOTHE • SMART MONEY",
 
-  const source =
-    params.get("utm_source") || "direct";
+    heroTitle:
+      "Tìm đúng sản phẩm tài chính.",
 
-  const campaign =
-    params.get("utm_campaign") || "genzbaothe";
+    heroHighlight:
+      "Đơn giản hơn.",
 
-  /*
-    Tracking dữ liệu click
-  */
+    heroDescription:
+      "So sánh khoản vay, thẻ tín dụng và ngân hàng theo nhu cầu của bạn. Thông tin rõ ràng, dễ hiểu và dễ lựa chọn.",
 
-  const trackingData = {
+    compareTitle:
+      "Đừng chọn theo cảm tính.",
 
-    event: "affiliate_click",
+    compareDescription:
+      "GenZ BaoThe giúp bạn nhìn các tiêu chí quan trọng trước khi quyết định: hạn mức, chi phí, điều kiện và quyền lợi.",
 
-    product: product,
+    ctaTitle:
+      "Bắt đầu lựa chọn hôm nay.",
 
-    source: source,
+    ctaDescription:
+      "Khám phá các sản phẩm tài chính được tổng hợp trên GenZ BaoThe.",
 
-    campaign: campaign,
+    footerDescription:
+      "Nền tảng tổng hợp và so sánh thông tin tài chính.",
 
-    time: new Date().toISOString()
+    stats: {
 
-  };
+      products: "150+",
+      users: "50K+",
+      cities: "63",
+      support: "24/7"
 
-  console.log(
-    "GENZ BAOTHE AFFILIATE:",
-    trackingData
-  );
+    }
+
+  },
 
 
-  /*
-    Lưu click cuối cùng
-  */
+  products: [
 
-  try {
+    {
 
-    localStorage.setItem(
-      "genzbaothe_last_click",
-      JSON.stringify(trackingData)
+      id: "vpbank-vay",
+
+      bank: "VPBank",
+
+      name:
+        "Khoản vay tiêu dùng",
+
+      category:
+        "Khoản vay",
+
+      icon:
+        "💰",
+
+      badge:
+        "Nổi bật",
+
+      description:
+        "Giải pháp vay tiêu dùng linh hoạt, phù hợp nhiều nhu cầu tài chính.",
+
+      limit:
+        "Đến 250 triệu",
+
+      term:
+        "6 - 60 tháng",
+
+      affiliateUrl:
+        "https://example.com"
+
+    },
+
+
+    {
+
+      id: "tpbank-card",
+
+      bank: "TPBank",
+
+      name:
+        "Thẻ tín dụng quốc tế",
+
+      category:
+        "Thẻ tín dụng",
+
+      icon:
+        "💳",
+
+      badge:
+        "Ưu đãi",
+
+      description:
+        "Nhiều lựa chọn ưu đãi, phù hợp nhu cầu chi tiêu và mua sắm.",
+
+      limit:
+        "Đến 500 triệu",
+
+      term:
+        "Đến 55 ngày",
+
+      affiliateUrl:
+        "https://example.com"
+
+    },
+
+
+    {
+
+      id: "cake-bank",
+
+      bank: "Cake",
+
+      name:
+        "Tài khoản ngân hàng số",
+
+      category:
+        "Ngân hàng",
+
+      icon:
+        "🏦",
+
+      badge:
+        "Digital",
+
+      description:
+        "Trải nghiệm ngân hàng số, mở tài khoản trực tuyến tiện lợi.",
+
+      limit:
+        "Online",
+
+      term:
+        "24/7",
+
+      affiliateUrl:
+        "https://example.com"
+
+    }
+
+  ]
+
+};
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   RENDER WEBSITE
+===================================================== */
+
+function renderWebsite(data) {
+
+  const site =
+    data.site || DEFAULT_DATA.site;
+
+
+  document.title =
+    site.brand || "GenZ BaoThe";
+
+
+  document.getElementById("brand").textContent =
+    site.brand;
+
+
+  document.getElementById("footerBrand").textContent =
+    site.brand;
+
+
+  document.getElementById("heroEyebrow").textContent =
+    site.heroEyebrow;
+
+
+  document.getElementById("heroTitle").innerHTML =
+
+    escapeHTML(site.heroTitle)
+    +
+    "<br>"
+    +
+    "<span>"
+    +
+    escapeHTML(site.heroHighlight)
+    +
+    "</span>";
+
+
+  document.getElementById("heroDescription").textContent =
+    site.heroDescription;
+
+
+  document.getElementById("compareTitle").textContent =
+    site.compareTitle;
+
+
+  document.getElementById("compareDescription").textContent =
+    site.compareDescription;
+
+
+  document.getElementById("ctaTitle").textContent =
+    site.ctaTitle;
+
+
+  document.getElementById("ctaDescription").textContent =
+    site.ctaDescription;
+
+
+  document.getElementById("footerDescription").textContent =
+    site.footerDescription;
+
+
+  document.getElementById("sProducts").textContent =
+    site.stats.products;
+
+
+  document.getElementById("sUsers").textContent =
+    site.stats.users;
+
+
+  document.getElementById("sCities").textContent =
+    site.stats.cities;
+
+
+  document.getElementById("sSupport").textContent =
+    site.stats.support;
+
+
+  const grid =
+    document.getElementById("productGrid");
+
+
+  grid.innerHTML = "";
+
+
+  (data.products || []).forEach(product => {
+
+    const card =
+      document.createElement("article");
+
+
+    card.className =
+      "card";
+
+
+    card.dataset.search = (
+
+      product.name
+      +
+      " "
+      +
+      product.bank
+      +
+      " "
+      +
+      product.category
+
+    ).toLowerCase();
+
+
+    card.innerHTML = `
+
+      <div class="top">
+
+        <div class="icon">
+          ${escapeHTML(product.icon)}
+        </div>
+
+        <span class="badge">
+          ${escapeHTML(product.badge)}
+        </span>
+
+      </div>
+
+
+      <div class="brand">
+        ${escapeHTML(product.bank)}
+      </div>
+
+
+      <h3>
+        ${escapeHTML(product.name)}
+      </h3>
+
+
+      <p>
+        ${escapeHTML(product.description)}
+      </p>
+
+
+      <div class="info">
+
+        <div class="ibox">
+
+          <small>
+            Hạn mức
+          </small>
+
+          <strong>
+            ${escapeHTML(product.limit)}
+          </strong>
+
+        </div>
+
+
+        <div class="ibox">
+
+          <small>
+            Kỳ hạn / điều kiện
+          </small>
+
+          <strong>
+            ${escapeHTML(product.term)}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="foot">
+
+        <span>
+          ${escapeHTML(product.category)}
+        </span>
+
+
+        <button
+          class="btn"
+          onclick="goAffiliate('${escapeHTML(product.id)}')"
+        >
+          Đăng ký →
+        </button>
+
+      </div>
+
+    `;
+
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================================
+   AFFILIATE
+===================================================== */
+
+let PRODUCTS = [];
+
+
+function goAffiliate(id) {
+
+  const product =
+    PRODUCTS.find(
+      item => item.id === id
     );
 
-  } catch (e) {}
+
+  if (!product) {
+
+    alert("Không tìm thấy campaign.");
+
+    return;
+
+  }
 
 
-  /*
-    Tạo link affiliate
+  if (
+    !product.affiliateUrl ||
+    product.affiliateUrl.includes("example.com")
+  ) {
 
-    Sau này bạn thay example.com
-    bằng link thật của network.
-  */
+    alert(
+      "Campaign này chưa có Affiliate URL. Hãy vào Admin để thêm link."
+    );
+
+    return;
+
+  }
+
 
   try {
 
     const url =
-      new URL(affiliateUrl);
+      new URL(product.affiliateUrl);
+
+
+    const current =
+      new URLSearchParams(
+        window.location.search
+      );
+
 
     url.searchParams.set(
       "utm_source",
-      source
+      current.get("utm_source") || "genzbaothe"
     );
+
 
     url.searchParams.set(
       "utm_campaign",
-      campaign
+      current.get("utm_campaign") || product.id
     );
+
 
     url.searchParams.set(
       "sub1",
-      product
+      product.id
     );
+
 
     url.searchParams.set(
       "sub2",
       "genzbaothe"
     );
+
 
     window.open(
       url.toString(),
@@ -1489,12 +1532,8 @@ function affiliateClick(product, affiliateUrl) {
 
   } catch (error) {
 
-    /*
-      Nếu chưa có affiliate URL thật
-    */
-
     alert(
-      "Bạn hãy thay LINK AFFILIATE trong file index.html trước khi sử dụng."
+      "Affiliate URL không hợp lệ."
     );
 
   }
@@ -1502,53 +1541,38 @@ function affiliateClick(product, affiliateUrl) {
 }
 
 
-/* ============================================
+/* =====================================================
    SEARCH
-   ============================================ */
+===================================================== */
 
-function searchProducts() {
+function filterProducts() {
 
-  const input =
+  const keyword =
     document
-      .getElementById("searchInput")
+      .getElementById("search")
       .value
       .toLowerCase()
       .trim();
 
-  const cards =
-    document.querySelectorAll(
-      ".product-card"
-    );
 
-  if (!input) {
+  document
+    .querySelectorAll(".card")
+    .forEach(card => {
 
-    cards.forEach(card => {
+      if (
+        !keyword ||
+        card.dataset.search.includes(keyword)
+      ) {
 
-      card.style.display = "";
+        card.style.display = "";
+
+      } else {
+
+        card.style.display = "none";
+
+      }
 
     });
-
-    return;
-
-  }
-
-
-  cards.forEach(card => {
-
-    const text =
-      card.innerText.toLowerCase();
-
-    if (text.includes(input)) {
-
-      card.style.display = "";
-
-    } else {
-
-      card.style.display = "none";
-
-    }
-
-  });
 
 
   document
@@ -1560,24 +1584,65 @@ function searchProducts() {
 }
 
 
-/* ENTER ĐỂ SEARCH */
+/* =====================================================
+   LOAD CONTENT TỪ CLOUDFLARE API
+===================================================== */
 
-document
-  .getElementById("searchInput")
-  .addEventListener(
-    "keypress",
-    function(event) {
+async function loadWebsiteData() {
 
-      if (
-        event.key === "Enter"
-      ) {
+  try {
 
-        searchProducts();
+    const response =
+      await fetch(
+        "/api/content",
+        {
+          cache: "no-store"
+        }
+      );
 
-      }
+
+    if (!response.ok) {
+
+      throw new Error(
+        "API error"
+      );
 
     }
-  );
+
+
+    const data =
+      await response.json();
+
+
+    PRODUCTS =
+      data.products || [];
+
+
+    renderWebsite(data);
+
+
+  } catch (error) {
+
+    console.log(
+      "Dùng dữ liệu mặc định:",
+      error
+    );
+
+
+    PRODUCTS =
+      DEFAULT_DATA.products;
+
+
+    renderWebsite(
+      DEFAULT_DATA
+    );
+
+  }
+
+}
+
+
+loadWebsiteData();
 
 </script>
 
