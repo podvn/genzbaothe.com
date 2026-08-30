@@ -168,11 +168,14 @@ export async function onRequestPost({
       );
 
 
-  if (
-    body.password
-    !==
-    env.ADMIN_PASSWORD
-  ) {
+  console.log("PASSWORD LENGTH:", body.password?.length);
+console.log("ENV PASSWORD LENGTH:", env.ADMIN_PASSWORD?.length);
+
+if (
+  body.password
+  !==
+  env.ADMIN_PASSWORD
+) {
 
     return json({
 
