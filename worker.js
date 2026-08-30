@@ -1,13 +1,151 @@
-/* =========================================================
-   GenZ BaoThe - Cloudflare Worker
-   ========================================================= */
+export default {
+  async fetch(request, env) {
+
+    const url = new URL(request.url);
+    const path = url.pathname;
+
+
+    /* =====================================================
+       API: LOGIN
+       ===================================================== */
+
+    if (
+      path === "/api/admin/login" &&
+      request.method === "POST"
+    ) {
+
+      if (!env.ADMIN_PASSWORD) {
+
+        return json({
+          error:
+            "ADMIN_PASSWORD chưa được cấu hình trên Cloudflare."
+        }, 500);
+
+      }
+
+
+      if (!env.ADMIN_SECRET) {
+
+        return json({
+          error:
+            "ADMIN_SECRET chưa được cấu hình trên Cloudflare."
+        }, 500);
+
+      }
+
+
+      let body;
+
+      try {
+
+        body = await request.json();
+
+      } catch {
+
+        return json({
+          error:
+            "Dữ liệu đăng nhập không hợp lệ."
+        }, 400);
+
+      }
+
+
+      if (
+        body.password !==
+        env.ADMIN_PASSWORD
+      ) {
+
+        return json({
+          error:
+            "Sai mật khẩu."
+        }, 401);
+
+      }
+
+
+      const token =
+        await createToken(
+          env.ADMIN_SECRET
+        );
+
+
+      return json({
+        success: true,
+        token
+      });
+
+    }
+
+
+    /* =====================================================
+       API: CONTENT
+       ===================================================== */
+
+    if (
+      path === "/api/admin/content"
+    ) {
+
+      if (
+        request.method === "GET"
+      ) {
+
+        return getContent(
+          request,
+          env
+        );
+
+      }
+
+
+      if (
+        request.method === "PUT"
+      ) {
+
+        return saveContent(
+          request,
+          env
+        );
+
+      }
+
+
+      return json({
+        error:
+          "Method Not Allowed"
+      }, 405);
+
+    }
+
+
+    /* =====================================================
+       WEBSITE / ADMIN HTML
+       ===================================================== */
+
+    if (env.ASSETS) {
+
+      return env.ASSETS.fetch(
+        request
+      );
+
+    }
+
+
+    return new Response(
+      "GenZ BaoThe Worker is running."
+    );
+
+  }
+};
 
 
 /* =========================================================
-   JSON RESPONSE
+   JSON
    ========================================================= */
 
-function json(data, status = 200) {
+function json(
+  data,
+  status = 200
+) {
 
   return new Response(
     JSON.stringify(data),
@@ -15,8 +153,11 @@ function json(data, status = 200) {
       status,
 
       headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store"
+        "Content-Type":
+          "application/json",
+
+        "Cache-Control":
+          "no-store"
       }
     }
   );
@@ -25,7 +166,7 @@ function json(data, status = 200) {
 
 
 /* =========================================================
-   HMAC SHA-256
+   SIGN
    ========================================================= */
 
 async function sign(
@@ -67,11 +208,11 @@ async function sign(
 
 
   return btoa(
-
     String.fromCharCode(
-      ...new Uint8Array(signature)
+      ...new Uint8Array(
+        signature
+      )
     )
-
   )
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
@@ -99,7 +240,9 @@ async function createToken(
 
   const payloadString =
     btoa(
-      JSON.stringify(payload)
+      JSON.stringify(
+        payload
+      )
     );
 
 
@@ -129,16 +272,6 @@ async function verifyToken(
 ) {
 
   try {
-
-    if (
-      !token ||
-      !secret
-    ) {
-
-      return false;
-
-    }
-
 
     const parts =
       token.split(".");
@@ -200,22 +333,13 @@ async function verifyToken(
 
 
 /* =========================================================
-   AUTHORIZATION
+   AUTH
    ========================================================= */
 
 async function authorized(
   request,
   env
 ) {
-
-  if (
-    !env.ADMIN_SECRET
-  ) {
-
-    return false;
-
-  }
-
 
   const header =
     request.headers.get(
@@ -248,122 +372,7 @@ async function authorized(
 
 
 /* =========================================================
-   LOGIN
-   POST /api/admin/login
-   ========================================================= */
-
-async function login(
-  request,
-  env
-) {
-
-  if (
-    !env.ADMIN_PASSWORD
-  ) {
-
-    return json(
-      {
-        error:
-          "ADMIN_PASSWORD chưa được cấu hình trên Cloudflare."
-      },
-      500
-    );
-
-  }
-
-
-  if (
-    !env.ADMIN_SECRET
-  ) {
-
-    return json(
-      {
-        error:
-          "ADMIN_SECRET chưa được cấu hình trên Cloudflare."
-      },
-      500
-    );
-
-  }
-
-
-  let body;
-
-  try {
-
-    body =
-      await request.json();
-
-  }
-
-  catch {
-
-    return json(
-      {
-        error:
-          "Request đăng nhập không hợp lệ."
-      },
-      400
-    );
-
-  }
-
-
-  const password =
-    typeof body?.password === "string"
-      ? body.password
-      : "";
-
-
-  if (!password) {
-
-    return json(
-      {
-        error:
-          "Vui lòng nhập mật khẩu."
-      },
-      400
-    );
-
-  }
-
-
-  if (
-    password !==
-    env.ADMIN_PASSWORD
-  ) {
-
-    return json(
-      {
-        error:
-          "Mật khẩu không chính xác."
-      },
-      401
-    );
-
-  }
-
-
-  const token =
-    await createToken(
-      env.ADMIN_SECRET
-    );
-
-
-  return json(
-    {
-      success: true,
-      token
-    },
-    200
-  );
-
-}
-
-
-/* =========================================================
    GET CONTENT
-   GET /api/admin/content
    ========================================================= */
 
 async function getContent(
@@ -378,26 +387,20 @@ async function getContent(
     ))
   ) {
 
-    return json(
-      {
-        error:
-          "Unauthorized"
-      },
-      401
-    );
+    return json({
+      error:
+        "Unauthorized"
+    }, 401);
 
   }
 
 
   if (!env.DB) {
 
-    return json(
-      {
-        error:
-          "Cloudflare D1 binding DB chưa được cấu hình."
-      },
-      500
-    );
+    return json({
+      error:
+        "D1 binding DB chưa được cấu hình."
+    }, 500);
 
   }
 
@@ -433,7 +436,9 @@ async function getContent(
             affiliate_url,
             active,
             sort_order
+
           FROM products
+
           ORDER BY sort_order ASC
           `
         )
@@ -502,46 +507,44 @@ async function getContent(
 
       products:
         (products.results || [])
-          .map(
-            product => ({
+          .map(product => ({
 
-              id:
-                product.id,
+            id:
+              product.id,
 
-              bank:
-                product.bank,
+            bank:
+              product.bank,
 
-              name:
-                product.name,
+            name:
+              product.name,
 
-              category:
-                product.category,
+            category:
+              product.category,
 
-              icon:
-                product.icon,
+            icon:
+              product.icon,
 
-              badge:
-                product.badge,
+            badge:
+              product.badge,
 
-              description:
-                product.description,
+            description:
+              product.description,
 
-              limit:
-                product.limit_value,
+            limit:
+              product.limit_value,
 
-              term:
-                product.term,
+            term:
+              product.term,
 
-              affiliateUrl:
-                product.affiliate_url,
+            affiliateUrl:
+              product.affiliate_url,
 
-              active:
-                Boolean(
-                  product.active
-                )
+            active:
+              Boolean(
+                product.active
+              )
 
-            })
-          )
+          }))
 
     });
 
@@ -549,21 +552,12 @@ async function getContent(
 
   catch (error) {
 
-    console.error(
-      "GET CONTENT ERROR:",
-      error
-    );
-
-
-    return json(
-      {
-        error:
-          "Không thể tải dữ liệu.",
-        detail:
-          error.message
-      },
-      500
-    );
+    return json({
+      error:
+        "Không thể tải dữ liệu.",
+      detail:
+        error.message
+    }, 500);
 
   }
 
@@ -571,8 +565,7 @@ async function getContent(
 
 
 /* =========================================================
-   PUT CONTENT
-   PUT /api/admin/content
+   SAVE CONTENT
    ========================================================= */
 
 async function saveContent(
@@ -587,26 +580,20 @@ async function saveContent(
     ))
   ) {
 
-    return json(
-      {
-        error:
-          "Unauthorized"
-      },
-      401
-    );
+    return json({
+      error:
+        "Unauthorized"
+    }, 401);
 
   }
 
 
   if (!env.DB) {
 
-    return json(
-      {
-        error:
-          "Cloudflare D1 binding DB chưa được cấu hình."
-      },
-      500
-    );
+    return json({
+      error:
+        "D1 binding DB chưa được cấu hình."
+    }, 500);
 
   }
 
@@ -622,13 +609,10 @@ async function saveContent(
 
   catch {
 
-    return json(
-      {
-        error:
-          "Dữ liệu JSON không hợp lệ."
-      },
-      400
-    );
+    return json({
+      error:
+        "Dữ liệu không hợp lệ."
+    }, 400);
 
   }
 
@@ -640,13 +624,10 @@ async function saveContent(
     )
   ) {
 
-    return json(
-      {
-        error:
-          "Dữ liệu không hợp lệ."
-      },
-      400
-    );
+    return json({
+      error:
+        "Dữ liệu không hợp lệ."
+    }, 400);
 
   }
 
@@ -657,10 +638,6 @@ async function saveContent(
       new Date()
         .toISOString();
 
-
-    /* -------------------------
-       SAVE SITE
-    ------------------------- */
 
     await env.DB
       .prepare(
@@ -691,20 +668,13 @@ async function saveContent(
         `
       )
       .bind(
-
         JSON.stringify(
           data.site
         ),
-
         now
-
       )
       .run();
 
-
-    /* -------------------------
-       DELETE OLD PRODUCTS
-    ------------------------- */
 
     await env.DB
       .prepare(
@@ -712,10 +682,6 @@ async function saveContent(
       )
       .run();
 
-
-    /* -------------------------
-       INSERT PRODUCTS
-    ------------------------- */
 
     const statements =
       data.products.map(
@@ -807,152 +773,25 @@ async function saveContent(
 
 
     return json({
-
       success:
         true,
 
       message:
         "Đã lưu thành công."
-
     });
 
   }
 
   catch (error) {
 
-    console.error(
-      "SAVE CONTENT ERROR:",
-      error
-    );
+    return json({
+      error:
+        "Không thể lưu dữ liệu.",
 
-
-    return json(
-      {
-        error:
-          "Không thể lưu dữ liệu.",
-        detail:
-          error.message
-      },
-      500
-    );
+      detail:
+        error.message
+    }, 500);
 
   }
 
 }
-
-
-/* =========================================================
-   WORKER ENTRY
-   ========================================================= */
-
-export default {
-
-  async fetch(
-    request,
-    env
-  ) {
-
-    const url =
-      new URL(request.url);
-
-    const path =
-      url.pathname;
-
-
-    /* =====================================================
-       API - LOGIN
-       ===================================================== */
-
-    if (
-      path ===
-      "/api/admin/login"
-    ) {
-
-      if (
-        request.method !==
-        "POST"
-      ) {
-
-        return json(
-          {
-            error:
-              "Method Not Allowed"
-          },
-          405
-        );
-
-      }
-
-
-      return login(
-        request,
-        env
-      );
-
-    }
-
-
-    /* =====================================================
-       API - CONTENT
-       ===================================================== */
-
-    if (
-      path ===
-      "/api/admin/content"
-    ) {
-
-      if (
-        request.method ===
-        "GET"
-      ) {
-
-        return getContent(
-          request,
-          env
-        );
-
-      }
-
-
-      if (
-        request.method ===
-        "PUT"
-      ) {
-
-        return saveContent(
-          request,
-          env
-        );
-
-      }
-
-
-      return json(
-        {
-          error:
-            "Method Not Allowed"
-        },
-        405
-      );
-
-    }
-
-
-    /* =====================================================
-       OTHER REQUESTS
-       ===================================================== */
-
-    return new Response(
-      "GenZ BaoThe Worker is running.",
-      {
-        status: 200,
-        headers: {
-          "Content-Type":
-            "text/plain; charset=utf-8"
-        }
-      }
-    );
-
-  }
-
-};
